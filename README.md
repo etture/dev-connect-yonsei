@@ -8,7 +8,7 @@
 
 - request body
 
-  ```json
+  ```
   {
       "email": email address,
       "password": password
@@ -17,7 +17,7 @@
 
 - response body
 
-  ```json
+  ```
   {
       "success": true / false,
       "admin_idx": admin idx,
@@ -33,7 +33,7 @@
 
 - request body
 
-  ```json
+  ```
   {
       "email": email address,
       "password": password
@@ -42,7 +42,7 @@
 
 - response body
 
-  ```json
+  ```
   {
       "success": true / false,
       "freelancer_idx": freelancer idx,
@@ -58,7 +58,7 @@
 
 - request body
 
-  ```json
+  ```
   {
       "email": email address,
       "password": password
@@ -67,7 +67,7 @@
 
 - response body
 
-  ```json
+  ```
   {
       "success": true / false,
       "client_idx": client idx,
@@ -85,7 +85,7 @@
 
 - request body
 
-  ```json
+  ```
   {
       "email": email address,
       "password": password,
@@ -99,7 +99,7 @@
 
 - response body
 
-  ```json
+  ```
   {
       "success": true / false,
       "freelancer_idx": freelancer idx,
@@ -115,7 +115,7 @@
 
 - request body
 
-  ```json
+  ```
   {
       "email": email address,
       "password": password,
@@ -126,7 +126,7 @@
 
 - response body
 
-  ```json
+  ```
   {
       "success": true / false,
       "client_idx": client idx,
@@ -148,7 +148,7 @@
 
 - request body
 
-  ```json
+  ```
   {
       "freelancer_idx": freelancer idx
   }
@@ -156,7 +156,7 @@
 
 - response body
 
-  ```json
+  ```
   {
       "success": true / false,
       "error_message": error message is failed
@@ -171,7 +171,7 @@
 
 - request body
 
-  ```json
+  ```
   {
       "client_idx": client idx
   }
@@ -179,7 +179,7 @@
 
 - response body
 
-  ```json
+  ```
   {
       "success": true / false,
       "error_message": error message is failed
@@ -202,7 +202,7 @@
 
 - response body
 
-  ```json
+  ```
   {
       "projects": [
           {
@@ -242,7 +242,7 @@
 
   - Must include project idx, then optionally include items to be modified
 
-  ```json
+  ```
   {
       "project_idx": project idx (REQUIRED),
       "start_date": start date (OPTIONAL),
@@ -257,7 +257,7 @@
 
 - response body
 
-  ```json
+  ```
   {
       "success": true / false,
       "error_message": error message is failed
@@ -272,7 +272,7 @@
 
 - request body
 
-  ```json
+  ```
   {
       "project_idx": project idx
   }
@@ -280,7 +280,7 @@
 
 - response body
 
-  ```json
+  ```
   {
       "success": true / false,
       "error_message": error message if failed
@@ -300,7 +300,7 @@
 
   - Must include team idx, then optionally include items to be modified
 
-  ```json
+  ```
   {
       "team_idx": team idx (REQUIRED),
   	"name": team name (OPTIONAL),
@@ -311,7 +311,7 @@
 
 - response body
 
-  ```json
+  ```
   {
       "success": true / false,
       "error_message": error message if failed
