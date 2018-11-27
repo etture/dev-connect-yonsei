@@ -10,7 +10,7 @@ const dotenv = require('dotenv').config();
 const PORT = process.env.PORT || 3014;
 
 // Routes
-const routerApi = require('./routes/index');
+const routes = require('./routes/index');
 
 // Middleware setup
 app.use(morgan('dev'));
@@ -21,7 +21,7 @@ app.use(cors());
 app.use(passport.initialize());
 
 // Router endpoint
-app.use('/api', routerApi);
+app.use('/api', routes);
 
 // Server connectivity test page
 app.get('/', (req, res) => {
