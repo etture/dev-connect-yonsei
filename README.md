@@ -29,11 +29,11 @@
 
   - [dealing with projects (/api/admin/project)](#apiadminproject-(dealing-with-projects))
       - [x] [/api/admin/project/getAll](#apiadminprojectgetall) `GET`
-      - [ ] [/api/admin/project/modify](#apiadminprojectmodify) `PUT`
-      - [ ] [/api/admin/project/delete](#apiadminprojectdelete) `DELETE`
+      - [x] [/api/admin/project/modify](#apiadminprojectmodify) `PUT`
+      - [x] [/api/admin/project/delete](#apiadminprojectdelete) `DELETE`
   - [dealing with teams (/api/admin/team)](#apiadminteam-(dealing-with-teams)) 
-    - [ ] [/api/admin/team/modify](#apiadminteammodify) `PUT`
-    - [ ] [/api/admin/team/delete](#apiadminteamdelete) `DELETE`
+    - [x] [/api/admin/team/modify](#apiadminteammodify) `PUT`
+    - [x] [/api/admin/team/delete](#apiadminteamdelete) `DELETE`
 
 - [freelancer account (/api/freelancer)](#apifreelancer-(freelancer-account))
 
@@ -231,7 +231,7 @@
 
   ```
   {
-      "admin_key": "adminkey1234",
+      "admin_key": admin key,
       "freelancer_idx": freelancer idx
   }
   ```
@@ -257,7 +257,7 @@
 
   ```
   {
-      "admin_key": "adminkey1234",
+      "admin_key": admin key,
       "client_idx": client idx
   }
   ```
@@ -331,7 +331,7 @@
 
   ```
   {
-      "admin_key": "adminkey1234",
+      "admin_key": admin key,
       "project_idx": project idx (REQUIRED),
       "start_date": start date (OPTIONAL),
       "end_date": end date (OPTIONAL),
@@ -364,7 +364,7 @@
 
   ```
   {
-      "admin_key": "adminkey1234",
+      "admin_key": admin key,
       "project_idx": project idx
   }
   ```
@@ -394,7 +394,7 @@
 
   ```
   {
-      "admin_key": "adminkey1234",
+      "admin_key": admin key,
       "team_idx": team idx (REQUIRED),
   	"name": team name (OPTIONAL),
   	"comment": comment (OPTIONAL),
@@ -424,7 +424,7 @@
 
   ```
   {
-      "admin_key": "adminkey1234",
+      "admin_key": admin key,
       "team_idx": team idx
   }
   ```

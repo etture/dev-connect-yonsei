@@ -8,7 +8,7 @@ exports.freelancer = (req, res) => {
         db.query("DELETE FROM `freelancer` WHERE idx = ?", freelancer_idx, (err, result) => {
             if (err) return res.status(400).json({
                 success: false,
-                error_message: "admin delete freelancer failed"
+                error_message: "admin delete freelancer failed; database error"
             });
 
             res.status(200).json({
@@ -25,7 +25,7 @@ exports.client = (req, res) => {
         db.query("DELETE FROM `client` WHERE idx = ?", client_idx, (err, result) => {
             if (err) return res.status(400).json({
                 success: false,
-                error_message: "admin delete client failed"
+                error_message: "admin delete client failed; database error"
             });
 
             res.status(200).json({
