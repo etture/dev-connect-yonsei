@@ -1,3 +1,76 @@
+## Host: *https://dev-connect-yonsei.herokuapp.com*
+
+# API Endpoints
+
+- [signing in (/api/signin)](#apisignin-(signing-in)) 
+
+  - [x] [/api/signin/admin](#apisigninadmin) `POST`
+  - [x] [/api/signin/freelancer](#apisigninfreelancer) `POST`
+  - [x] [/api/signin/client](#apisigninclient) `POST`
+
+- [signing up (/api/signup)](#apisignup-(signing-up))
+
+  - [x] [/api/signup/freelancer](#apisignupfreelancer) `POST`
+  - [x] [/api/signup/client](#apisignupclient) `POST`
+
+- [admin account (/api/admin)](#apiadmin-(admin-account))
+
+  - [deleting accounts (/api/admin/account/delete)](#apiadminaccountdelete)
+    - [ ] [/api/admin/account/delete/freelancer](#apiadminaccountdeletefreelancer) `DELETE`
+    - [ ] [/api/admin/account/delete/client](#apiadminaccountdeleteclient) `DELETE`
+
+  -  [dealing with projects (/api/admin/project)](#apiadminproject-(dealing-with-projects))
+    - [ ] [/api/admin/project/getAll](#apiadminprojectgetall) `GET`
+    - [ ] [/api/admin/project/modify](#apiadminprojectmodify) `PUT`
+    - [ ] [/api/admin/project/delete](#apiadminprojectdelete) `DELETE`
+  - [dealing with teams (/api/admin/team)](#apiadminteam-(dealing-with-teams)) 
+    - [ ] [/api/admin/team/modify](#apiadminteammodify) `PUT`
+    - [ ] [/api/admin/team/delete](#apiadminteamdelete) `DELETE`
+
+- [freelancer account (/api/freelancer)](#apifreelancer-(freelancer-account))
+
+  - [account information (/api/freelancer/account)](#apifreelanceraccount-(account-information))
+    - [ ] [/api/freelancer/account/modify](#apifreelanceraccountmodify) `PUT`
+  - [project portfolio (/api/freelancer/portfolio)](#apifreelancerportfolio-(project-portfolio))
+    - [ ] [/api/freelancer/portfolio/getAll](#apifreelancerportfoliogetall) `POST`
+    - [ ] [/api/freelancer/portfolio/getInternal](#apifreelancerportfoliogetInternal) `POST`
+    - [ ] [/api/freelancer/portfolio/getExternal](#apifreelancerportfoliogetexternal) `POST`
+    - [ ] [/api/freelancer/portfolio/registerExternal](#apifreelancerportfolioregisterexternal) `POST`
+  - [projects (/api/freelancer/project)](#apifreelancerproject-(projects))
+    - [ ] [/api/freelancer/project/getAll](#apifreelancerprojectgetall) `GET`
+    - [ ] [/api/freelancer/project/getForMe](#apifreelancerprojectgetforme) `POST`
+    - [ ] [/api/freelancer/project/getInfo](#apifreelancerprojectgetinfo) `POST`
+    - [ ] [/api/freelancer/project/apply](#apifreelancerprojectapply) `POST`
+    - [ ] [/api/freelancer/project/getApplied](#apifreelancerprojectgetapplied) `POST`
+    - [ ] [/api/freelancer/project/getCurrent](#apifreelancerprojectgetcurrent) `POST`
+  - [related to teams (/api/freelancer/team)](#apifreelancerteam-(related-to-teams))
+    - [ ] [/api/freelancer/team/create](#apifreelancerteamcreate) `POST`
+    - [ ] [/api/freelancer/team/join](#apifreelancerteamjoin) `POST`
+    - [ ] [/api/freelancer/team/leave](#apifreelancerteamleave) `POST`
+    - [ ] [/api/freelancer/team/apply](#apifreelancerteamapply) `POST`
+    - [ ] [/api/freelancer/team/finish/submit](#apifreelancerteamfinishsubmit) `POST`
+    - [ ] [/api/freelancer/team/finish/rateClient](#apifreelancerteamfinishrateclient) `POST`
+  - [submitting a request to finish a project (/api/freelancer/finish)](#apifreelancerfinish-(submitting-a-request-to-finish-a-project))
+    - [ ] [/api/freelancer/finish/submit](#apifreelancerfinishsubmit) `POST`
+    - [ ] [/api/freelancer/finish/rateClient](#apifreelancerfinishrateclient) `POST`
+
+- [client account (/api/client)](#apiclient-(client-account))
+
+  - [projects (/api/client/project)](#apiclientproject-(projects))
+    - [ ] [/api/client/project/register](#apiclientprojectregister) `POST`
+    - [ ] [/api/client/project/getCurrent](#apiclientprojectgetcurrent) `POST`
+    - [ ] [/api/client/project/getRegistered](#apiclientprojectgetregistered) `POST`
+    - [ ] [/api/client/project/getCompleted](#apiclientprojectgetcompleted) `POST`
+    - [ ] [/api/client/project/getApplicants](#apiclientprojectgetapplicants) `POST`
+    - [ ] [/api/client/project/acceptApplicant](#apiclientprojectacceptapplicant) `POST`
+  -  [submitting a request to finish a project (/api/client/finish)](#apiclientfinish-(submitting-a-request-to-finish-a-project))
+    - [ ] [/api/client/finish/getSubmissions](#apiclientfinishgetsubmissions) `POST`
+    - [ ] [/api/client/finish/accept](#apiclientfinishaccept) `POST`
+    - [ ] [/api/client/finish/reject](#apiclientfinishreject) `POST`
+    - [ ] [/api/client/finish/rate](#apiclientfinishrate) `POST`
+
+
+
 ## /api/signin (signing in)
 
 ##### /api/signin/admin
@@ -8,7 +81,7 @@
 
 - request body
 
-  ```
+  ```json
   {
       "email": email address,
       "password": password
@@ -17,7 +90,7 @@
 
 - response body
 
-  ```
+  ```json
   {
       "success": true / false,
       "admin_idx": admin idx,
@@ -33,7 +106,7 @@
 
 - request body
 
-  ```
+  ```json
   {
       "email": email address,
       "password": password
@@ -42,7 +115,7 @@
 
 - response body
 
-  ```
+  ```json
   {
       "success": true / false,
       "freelancer_idx": freelancer idx,
@@ -58,7 +131,7 @@
 
 - request body
 
-  ```
+  ```json
   {
       "email": email address,
       "password": password
@@ -67,7 +140,7 @@
 
 - response body
 
-  ```
+  ```json
   {
       "success": true / false,
       "client_idx": client idx,
@@ -85,7 +158,7 @@
 
 - request body
 
-  ```
+  ```json
   {
       "email": email address,
       "password": password,
@@ -99,7 +172,7 @@
 
 - response body
 
-  ```
+  ```json
   {
       "success": true / false,
       "freelancer_idx": freelancer idx,
@@ -115,7 +188,7 @@
 
 - request body
 
-  ```
+  ```json
   {
       "email": email address,
       "password": password,
@@ -126,7 +199,7 @@
 
 - response body
 
-  ```
+  ```json
   {
       "success": true / false,
       "client_idx": client idx,
@@ -136,9 +209,7 @@
 
 ## /api/admin (admin account)
 
-### /api/admin/account (signing up)
-
-#### /api/admin/account/delete
+### /api/admin/account
 
 ##### /api/admin/account/delete/freelancer
 
@@ -148,7 +219,7 @@
 
 - request body
 
-  ```
+  ```json
   {
       "freelancer_idx": freelancer idx
   }
@@ -156,7 +227,7 @@
 
 - response body
 
-  ```
+  ```json
   {
       "success": true / false,
       "error_message": error message is failed
@@ -171,7 +242,7 @@
 
 - request body
 
-  ```
+  ```json
   {
       "client_idx": client idx
   }
@@ -179,7 +250,7 @@
 
 - response body
 
-  ```
+  ```json
   {
       "success": true / false,
       "error_message": error message is failed
@@ -202,7 +273,7 @@
 
 - response body
 
-  ```
+  ```json
   {
       "projects": [
           {
@@ -242,7 +313,7 @@
 
   - Must include project idx, then optionally include items to be modified
 
-  ```
+  ```json
   {
       "project_idx": project idx (REQUIRED),
       "start_date": start date (OPTIONAL),
@@ -257,7 +328,7 @@
 
 - response body
 
-  ```
+  ```json
   {
       "success": true / false,
       "error_message": error message is failed
@@ -272,7 +343,7 @@
 
 - request body
 
-  ```
+  ```json
   {
       "project_idx": project idx
   }
@@ -280,7 +351,7 @@
 
 - response body
 
-  ```
+  ```json
   {
       "success": true / false,
       "error_message": error message if failed
@@ -300,7 +371,7 @@
 
   - Must include team idx, then optionally include items to be modified
 
-  ```
+  ```json
   {
       "team_idx": team idx (REQUIRED),
   	"name": team name (OPTIONAL),
@@ -311,7 +382,7 @@
 
 - response body
 
-  ```
+  ```json
   {
       "success": true / false,
       "error_message": error message if failed
@@ -957,7 +1028,6 @@
       "success": true / false,
       "error_message": error message if failed
   }
-  
   ```
 
 #### /api/freelancer/team/finish/rateClient
