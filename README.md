@@ -16,13 +16,13 @@
 - [admin account (/api/admin)](#apiadmin-(admin-account))
 
   - [deleting accounts (/api/admin/account/delete)](#apiadminaccountdelete)
-    - [ ] [/api/admin/account/delete/freelancer](#apiadminaccountdeletefreelancer) `DELETE`
-    - [ ] [/api/admin/account/delete/client](#apiadminaccountdeleteclient) `DELETE`
+    - [x] [/api/admin/account/delete/freelancer](#apiadminaccountdeletefreelancer) `DELETE`
+    - [x] [/api/admin/account/delete/client](#apiadminaccountdeleteclient) `DELETE`
 
-  -  [dealing with projects (/api/admin/project)](#apiadminproject-(dealing-with-projects))
-    - [ ] [/api/admin/project/getAll](#apiadminprojectgetall) `GET`
-    - [ ] [/api/admin/project/modify](#apiadminprojectmodify) `PUT`
-    - [ ] [/api/admin/project/delete](#apiadminprojectdelete) `DELETE`
+  - [dealing with projects (/api/admin/project)](#apiadminproject-(dealing-with-projects))
+      - [ ] [/api/admin/project/getAll](#apiadminprojectgetall) `GET`
+      - [ ] [/api/admin/project/modify](#apiadminprojectmodify) `PUT`
+      - [ ] [/api/admin/project/delete](#apiadminprojectdelete) `DELETE`
   - [dealing with teams (/api/admin/team)](#apiadminteam-(dealing-with-teams)) 
     - [ ] [/api/admin/team/modify](#apiadminteammodify) `PUT`
     - [ ] [/api/admin/team/delete](#apiadminteamdelete) `DELETE`
@@ -63,11 +63,11 @@
     - [ ] [/api/client/project/getCompleted](#apiclientprojectgetcompleted) `POST`
     - [ ] [/api/client/project/getApplicants](#apiclientprojectgetapplicants) `POST`
     - [ ] [/api/client/project/acceptApplicant](#apiclientprojectacceptapplicant) `POST`
-  -  [submitting a request to finish a project (/api/client/finish)](#apiclientfinish-(submitting-a-request-to-finish-a-project))
-    - [ ] [/api/client/finish/getSubmissions](#apiclientfinishgetsubmissions) `POST`
-    - [ ] [/api/client/finish/accept](#apiclientfinishaccept) `POST`
-    - [ ] [/api/client/finish/reject](#apiclientfinishreject) `POST`
-    - [ ] [/api/client/finish/rate](#apiclientfinishrate) `POST`
+  - [submitting a request to finish a project (/api/client/finish)](#apiclientfinish-(submitting-a-request-to-finish-a-project))
+      - [ ] [/api/client/finish/getSubmissions](#apiclientfinishgetsubmissions) `POST`
+      - [ ] [/api/client/finish/accept](#apiclientfinishaccept) `POST`
+      - [ ] [/api/client/finish/reject](#apiclientfinishreject) `POST`
+      - [ ] [/api/client/finish/rate](#apiclientfinishrate) `POST`
 
 
 
@@ -81,7 +81,7 @@
 
 - request body
 
-  ```json
+  ```
   {
       "email": email address,
       "password": password
@@ -90,7 +90,7 @@
 
 - response body
 
-  ```json
+  ```
   {
       "success": true / false,
       "admin_idx": admin idx,
@@ -106,7 +106,7 @@
 
 - request body
 
-  ```json
+  ```
   {
       "email": email address,
       "password": password
@@ -115,7 +115,7 @@
 
 - response body
 
-  ```json
+  ```
   {
       "success": true / false,
       "freelancer_idx": freelancer idx,
@@ -131,7 +131,7 @@
 
 - request body
 
-  ```json
+  ```
   {
       "email": email address,
       "password": password
@@ -140,7 +140,7 @@
 
 - response body
 
-  ```json
+  ```
   {
       "success": true / false,
       "client_idx": client idx,
@@ -158,7 +158,7 @@
 
 - request body
 
-  ```json
+  ```
   {
       "email": email address,
       "password": password,
@@ -172,7 +172,7 @@
 
 - response body
 
-  ```json
+  ```
   {
       "success": true / false,
       "freelancer_idx": freelancer idx,
@@ -188,7 +188,7 @@
 
 - request body
 
-  ```json
+  ```
   {
       "email": email address,
       "password": password,
@@ -199,7 +199,7 @@
 
 - response body
 
-  ```json
+  ```
   {
       "success": true / false,
       "client_idx": client idx,
@@ -219,7 +219,7 @@
 
 - request body
 
-  ```json
+  ```
   {
       "freelancer_idx": freelancer idx
   }
@@ -227,7 +227,7 @@
 
 - response body
 
-  ```json
+  ```
   {
       "success": true / false,
       "error_message": error message is failed
@@ -242,7 +242,7 @@
 
 - request body
 
-  ```json
+  ```
   {
       "client_idx": client idx
   }
@@ -250,7 +250,7 @@
 
 - response body
 
-  ```json
+  ```
   {
       "success": true / false,
       "error_message": error message is failed
@@ -273,7 +273,7 @@
 
 - response body
 
-  ```json
+  ```
   {
       "projects": [
           {
@@ -313,7 +313,7 @@
 
   - Must include project idx, then optionally include items to be modified
 
-  ```json
+  ```
   {
       "project_idx": project idx (REQUIRED),
       "start_date": start date (OPTIONAL),
@@ -328,7 +328,7 @@
 
 - response body
 
-  ```json
+  ```
   {
       "success": true / false,
       "error_message": error message is failed
@@ -343,7 +343,7 @@
 
 - request body
 
-  ```json
+  ```
   {
       "project_idx": project idx
   }
@@ -351,7 +351,7 @@
 
 - response body
 
-  ```json
+  ```
   {
       "success": true / false,
       "error_message": error message if failed
@@ -371,7 +371,7 @@
 
   - Must include team idx, then optionally include items to be modified
 
-  ```json
+  ```
   {
       "team_idx": team idx (REQUIRED),
   	"name": team name (OPTIONAL),
@@ -382,7 +382,7 @@
 
 - response body
 
-  ```json
+  ```
   {
       "success": true / false,
       "error_message": error message if failed
