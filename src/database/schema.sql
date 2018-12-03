@@ -88,6 +88,7 @@ CREATE TABLE Admin
   `idx`       INT             NOT NULL    AUTO_INCREMENT,
   `email`     VARCHAR(45)     NOT NULL    COMMENT 'Email address',
   `password`  VARCHAR(255)    NOT NULL    COMMENT 'Password',
+  `admin_key` VARCHAR(100) NOT NULL COMMENT 'Admin key',
   PRIMARY KEY (idx)
 );
 

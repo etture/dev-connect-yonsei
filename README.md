@@ -1,5 +1,13 @@
 ## Host: *https://dev-connect-yonsei.herokuapp.com*
 
+##### Admin Login
+
+###### email: admin@gmail.com
+
+###### password: admin
+
+###### admin_key: adminkey1234
+
 # API Endpoints
 
 - [signing in (/api/signin)](#apisignin-(signing-in)) 
@@ -20,7 +28,7 @@
     - [x] [/api/admin/account/delete/client](#apiadminaccountdeleteclient) `DELETE`
 
   - [dealing with projects (/api/admin/project)](#apiadminproject-(dealing-with-projects))
-      - [ ] [/api/admin/project/getAll](#apiadminprojectgetall) `GET`
+      - [x] [/api/admin/project/getAll](#apiadminprojectgetall) `GET`
       - [ ] [/api/admin/project/modify](#apiadminprojectmodify) `PUT`
       - [ ] [/api/admin/project/delete](#apiadminprojectdelete) `DELETE`
   - [dealing with teams (/api/admin/team)](#apiadminteam-(dealing-with-teams)) 
@@ -219,8 +227,11 @@
 
 - request body
 
+  - admin access requires `admin_key` attribute
+
   ```
   {
+      "admin_key": "adminkey1234",
       "freelancer_idx": freelancer idx
   }
   ```
@@ -242,8 +253,11 @@
 
 - request body
 
+  - admin access requires `admin_key` attribute
+
   ```
   {
+      "admin_key": "adminkey1234",
       "client_idx": client idx
   }
   ```
@@ -275,6 +289,7 @@
 
   ```
   {
+      "success": true / false,
       "projects": [
           {
               "idx": project idx (1),
@@ -312,9 +327,11 @@
 - request body
 
   - Must include project idx, then optionally include items to be modified
+  - admin access requires `admin_key` attribute
 
   ```
   {
+      "admin_key": "adminkey1234",
       "project_idx": project idx (REQUIRED),
       "start_date": start date (OPTIONAL),
       "end_date": end date (OPTIONAL),
@@ -343,8 +360,11 @@
 
 - request body
 
+  - admin access requires `admin_key` attribute
+
   ```
   {
+      "admin_key": "adminkey1234",
       "project_idx": project idx
   }
   ```
@@ -370,9 +390,11 @@
 - request body
 
   - Must include team idx, then optionally include items to be modified
+  - admin access requires `admin_key` attribute
 
   ```
   {
+      "admin_key": "adminkey1234",
       "team_idx": team idx (REQUIRED),
   	"name": team name (OPTIONAL),
   	"comment": comment (OPTIONAL),
@@ -398,8 +420,11 @@
 
 - request body
 
+  - admin access requires `admin_key` attribute
+
   ```
   {
+      "admin_key": "adminkey1234",
       "team_idx": team idx
   }
   ```
@@ -476,6 +501,7 @@
 
   ```
   {
+      "success": true / false,
       portfolio: [
           {
               "int_or_ext": "int",
@@ -527,6 +553,7 @@
 
   ```
   {
+      "success": true / false,
       internal: [
           {
               "idx": internal project idx (1),
@@ -579,6 +606,7 @@
 
   ```
   {
+      "success": true / false,
       external: [
           {
               "idx": external project idx (1),
@@ -647,6 +675,7 @@
 
   ```
   {
+      "success": true / false,
       "projects": [
           {
               "idx": project idx (1),
@@ -696,6 +725,7 @@
 
   ```
   {
+      "success": true / false,
       "projects": [
           {
               "idx": project idx (1),
@@ -742,6 +772,7 @@
 
   ```
   {
+      "success": true / false,
       "idx": project idx,
       "client_idx": client idx,
       "start_date": start date,
@@ -814,6 +845,7 @@
 
   ```
   {
+      "success": true / false,
       applied: [
           {
               "idx": project idx (1),
@@ -861,6 +893,7 @@
 
   ```
   {
+      "success": true / false,
       current: [
           {
               "idx": project idx (1),
@@ -1169,6 +1202,7 @@
 
   ```
   {
+      "success": true / false,
       current: [
           {
           	"idx": project idx (1),
@@ -1218,6 +1252,7 @@
 
   ```
   {
+      "success": true / false,
       registered: [
           {
           	"idx": project idx (1),
@@ -1265,6 +1300,7 @@
 
   ```
   {
+      "success": true / false,
       completed: [
           {
           	"idx": project idx (1),
@@ -1316,6 +1352,7 @@
 
   ```
   {
+      "success": true / false,
       applicants: [
           {
               "freelancer_or_team": "freelancer",
@@ -1442,7 +1479,8 @@
 
   ```
   {
-      completed: [
+      "success": true / false,
+      "completed": [
           {
           	"idx": project idx (1),
               "start_date": start date,
@@ -1648,9 +1686,9 @@ CREATE TABLE Admin
   `idx`       INT             NOT NULL    AUTO_INCREMENT,
   `email`     VARCHAR(45)     NOT NULL    COMMENT 'Email address',
   `password`  VARCHAR(255)    NOT NULL    COMMENT 'Password',
+  `admin_key` VARCHAR(100) NOT NULL COMMENT 'Admin key',
   PRIMARY KEY (idx)
 );
-
 
 
 -- Portfolio Table Create SQL
