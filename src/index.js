@@ -25,7 +25,7 @@ app.use('/api', routes);
 
 // Server connectivity test page
 app.get('/', (req, res) => {
-    res.send('DevConnect server deployed!');
+    res.send('DevConnect server deployed on Heroku');
 });
 
 app.listen(PORT, () => {
