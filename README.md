@@ -8,6 +8,8 @@
 
 ###### admin_key: adminkey1234
 
+#### [Important note about internal project `status`](#schema)
+
 # API Endpoints
 
 - [signing in (/api/signin)](#apisignin-(signing-in)) 
@@ -484,13 +486,13 @@
 - request body
 
   - must include freelancer idx
-  - must include sort scheme, whether to sort projects by start_date, end_date, or pay
+  - must include sort scheme, whether to sort projects by start_date, end_date, pay, or registered_at
   - must include asc/desc, whether to sort project in ascending or descending order
 
   ```
   {
       "freelancer_idx": freelancer idx (REQUIRED),
-      "sort_scheme": "start_date" OR "end_date" OR "pay" (REQUIRED),
+      "sort_scheme": "start_date" OR "end_date" OR "pay" OR "registered_at" (REQUIRED),
       "asc_desc": "asc" OR "desc" (REQUIRED)
   }
   ```
@@ -558,13 +560,13 @@
 - request body
 
   - must include freelancer idx
-  - must include sort scheme, whether to sort projects by start_date, end_date, or pay
+  - must include sort scheme, whether to sort projects by start_date, end_date, pay, or registered_at
   - must include asc/desc, whether to sort project in ascending or descending order
 
   ```
   {
       "freelancer_idx": freelancer idx (REQUIRED),
-      "sort_scheme": "start_date" OR "end_date" OR "pay" (REQUIRED),
+      "sort_scheme": "start_date" OR "end_date" OR "pay" OR "registered_at" (REQUIRED),
       "asc_desc": "asc" OR "desc" (REQUIRED)
   }
   ```
@@ -611,13 +613,13 @@
 - request body
 
   - must include freelancer idx
-  - must include sort scheme, whether to sort projects by start_date, end_date, or pay
+  - must include sort scheme, whether to sort projects by start_date, end_date, pay, or registered_at
   - must include asc/desc, whether to sort project in ascending or descending order
 
   ```
   {
       "freelancer_idx": freelancer idx (REQUIRED),
-      "sort_scheme": "start_date" OR "end_date" OR "pay" (REQUIRED),
+      "sort_scheme": "start_date" OR "end_date" OR "pay" OR "registered_at" (REQUIRED),
       "asc_desc": "asc" OR "desc" (REQUIRED)
   }
   ```
@@ -1657,6 +1659,7 @@ CREATE TABLE Internal_project
   `max_part`    INT       NOT NULL    COMMENT 'Maximum participant',
   `experience`  INT       NOT NULL    COMMENT 'Years of experience',
   `pay`         DOUBLE    NOT NULL    COMMENT 'Pay',
+  `registered_at` TIMESTAMP NOT NULL DEFAULT NOW(),
   `req_doc`     BLOB      NOT NULL    COMMENT 'Request document',
   `status`      VARCHAR(15) NOT NULL COMMENT 'Status',
   `client_rating` DOUBLE NULL COMMENT 'Rating on client by freelancer',

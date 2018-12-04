@@ -39,6 +39,7 @@ CREATE TABLE Internal_project
   `max_part`    INT       NOT NULL    COMMENT 'Maximum participant',
   `experience`  INT       NOT NULL    COMMENT 'Years of experience',
   `pay`         DOUBLE    NOT NULL    COMMENT 'Pay',
+  `registered_at` TIMESTAMP NOT NULL DEFAULT NOW(),
   `req_doc`     BLOB      NOT NULL    COMMENT 'Request document',
   `status`      VARCHAR(15) NOT NULL COMMENT 'Status',
   `client_rating` DOUBLE NULL COMMENT 'Rating on client by freelancer',
