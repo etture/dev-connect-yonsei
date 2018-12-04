@@ -38,12 +38,12 @@
 - [freelancer account (/api/freelancer)](#apifreelancer-(freelancer-account))
 
   - [account information (/api/freelancer/account)](#apifreelanceraccount-(account-information))
-    - [ ] [/api/freelancer/account/modify](#apifreelanceraccountmodify) `PUT`
+    - [x] [/api/freelancer/account/modify](#apifreelanceraccountmodify) `PUT`
   - [project portfolio (/api/freelancer/portfolio)](#apifreelancerportfolio-(project-portfolio))
-    - [ ] [/api/freelancer/portfolio/getAll](#apifreelancerportfoliogetall) `POST`
-    - [ ] [/api/freelancer/portfolio/getInternal](#apifreelancerportfoliogetInternal) `POST`
-    - [ ] [/api/freelancer/portfolio/getExternal](#apifreelancerportfoliogetexternal) `POST`
-    - [ ] [/api/freelancer/portfolio/registerExternal](#apifreelancerportfolioregisterexternal) `POST`
+    - [x] [/api/freelancer/portfolio/getAll](#apifreelancerportfoliogetall) `POST`
+    - [x] [/api/freelancer/portfolio/getInternal](#apifreelancerportfoliogetInternal) `POST`
+    - [x] [/api/freelancer/portfolio/getExternal](#apifreelancerportfoliogetexternal) `POST`
+    - [x] [/api/freelancer/portfolio/registerExternal](#apifreelancerportfolioregisterexternal) `POST`
   - [projects (/api/freelancer/project)](#apifreelancerproject-(projects))
     - [ ] [/api/freelancer/project/getAll](#apifreelancerprojectgetall) `GET`
     - [ ] [/api/freelancer/project/getForMe](#apifreelancerprojectgetforme) `POST`
@@ -477,7 +477,7 @@
 
 #### /api/freelancer/portfolio/getAll
 
-- see list of all completed projects 
+- see list of all of freelancer's completed projects, both internal and external
 
 - `POST`
 
@@ -490,7 +490,7 @@
   ```
   {
       "freelancer_idx": freelancer idx (REQUIRED),
-      "sort_scheme": "start" OR "end" OR "pay" (REQUIRED),
+      "sort_scheme": "start_date" OR "end_date" OR "pay" (REQUIRED),
       "asc_desc": "asc" OR "desc" (REQUIRED)
   }
   ```
@@ -502,9 +502,8 @@
   ```
   {
       "success": true / false,
-      portfolio: [
+      "internal": [
           {
-              "int_or_ext": "int",
               "idx": internal project idx,
               "client_idx": client idx,
               "start_date": start date,
@@ -516,7 +515,20 @@
               "req_doc": blob of req document if exists
           },
           {
-              "int_or_ext": "ext",
+              "idx": internal project idx,
+              "client_idx": client idx,
+              "start_date": start date,
+              "end_date": end date,
+              "min_part": # of minimum participants,
+              "max_part": # of maximum participants,
+              "experience": # years experience required,
+              "pay": pay in Korean Won,
+              "req_doc": blob of req document if exists
+          },
+          ...
+      ],
+      "external": [
+      	{
               "idx": external project idx,
               "start_date": start date,
               "end_date": end date,
@@ -524,14 +536,22 @@
               "attachment": blob of attached document if exists, 
               "comment": comment on external project
           },
-          ...
+          {
+              "idx": external project idx,
+              "start_date": start date,
+              "end_date": end date,
+              "pay": pay in Korean Won,
+              "attachment": blob of attached document if exists, 
+              "comment": comment on external project
+          },
+          ...  
       ]
   }
   ```
 
 #### /api/freelancer/portfolio/getInternal
 
-- see list of all completed internal projects 
+- see list of all of freelancer's completed internal projects 
 
 - `POST`
 
@@ -544,7 +564,7 @@
   ```
   {
       "freelancer_idx": freelancer idx (REQUIRED),
-      "sort_scheme": "start" OR "end" OR "pay" (REQUIRED),
+      "sort_scheme": "start_date" OR "end_date" OR "pay" (REQUIRED),
       "asc_desc": "asc" OR "desc" (REQUIRED)
   }
   ```
@@ -554,7 +574,7 @@
   ```
   {
       "success": true / false,
-      internal: [
+      "internal": [
           {
               "idx": internal project idx (1),
               "client_idx": client idx,
@@ -597,7 +617,7 @@
   ```
   {
       "freelancer_idx": freelancer idx (REQUIRED),
-      "sort_scheme": "start" OR "end" OR "pay" (REQUIRED),
+      "sort_scheme": "start_date" OR "end_date" OR "pay" (REQUIRED),
       "asc_desc": "asc" OR "desc" (REQUIRED)
   }
   ```
@@ -607,7 +627,7 @@
   ```
   {
       "success": true / false,
-      external: [
+      "external": [
           {
               "idx": external project idx (1),
               "start_date": start date,
@@ -1671,6 +1691,7 @@ CREATE TABLE Team
 CREATE TABLE External_project
 (
   `idx`         INT             NOT NULL    AUTO_INCREMENT,
+  `freelancer_idx`  INT    NOT NULL,
   `start_date`  DATE            NOT NULL    COMMENT 'Start date',
   `end_date`    DATE            NOT NULL    COMMENT 'End date',
   `pay`         DOUBLE          NOT NULL    COMMENT 'Pay',
@@ -1692,6 +1713,7 @@ CREATE TABLE Admin
 
 
 -- Portfolio Table Create SQL
+-- `int_or_ext` 1 is internal, 0 is external
 CREATE TABLE Portfolio
 (
   `freelancer_idx`   INT    NOT NULL,

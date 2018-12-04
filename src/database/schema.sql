@@ -73,6 +73,7 @@ CREATE TABLE Team
 CREATE TABLE External_project
 (
   `idx`         INT             NOT NULL    AUTO_INCREMENT,
+  `freelancer_idx`  INT    NOT NULL,
   `start_date`  DATE            NOT NULL    COMMENT 'Start date',
   `end_date`    DATE            NOT NULL    COMMENT 'End date',
   `pay`         DOUBLE          NOT NULL    COMMENT 'Pay',
@@ -95,19 +96,19 @@ CREATE TABLE Admin
 
 
 -- Portfolio Table Create SQL
-CREATE TABLE Portfolio
+-- Internal projects completed by freelancer or team
+CREATE TABLE Completed_project
 (
-  `freelancer_idx`   INT    NOT NULL,
-  `int_or_ext`       BIT    NOT NULL,
-  `int_project_idx`  INT    NULL,
-  `ext_project_idx`  INT    NULL,
-  FOREIGN KEY (int_project_idx)
+  `project_idx`  INT    NOT NULL,
+  `freelancer_idx`   INT    NULL,
+  `team_idx` INT NULL,
+  FOREIGN KEY (project_idx)
   REFERENCES Internal_project (idx)  ON DELETE CASCADE ON UPDATE CASCADE,
-  FOREIGN KEY (ext_project_idx)
-  REFERENCES External_project (idx)  ON DELETE CASCADE ON UPDATE CASCADE,
   FOREIGN KEY (freelancer_idx)
   REFERENCES Freelancer (idx)  ON DELETE CASCADE ON UPDATE CASCADE,
-  UNIQUE(freelancer_idx, int_project_idx, ext_project_idx)
+  FOREIGN KEY (team_idx)
+  REFERENCES Team (idx) ON DELETE CASCADE ON UPDATE CASCADE,
+  UNIQUE(project_idx, freelancer_idx, team_idx)
 );
 
 
