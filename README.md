@@ -10,20 +10,22 @@
 
 #### [Important note about internal project `status`](#schema)
 
+- language proficiency level: 0 ~ 10
+
 # API Endpoints
 
-- [signing in (/api/signin)](#apisignin-(signing-in)) 
+- #### <span style="color: green; font-weight: bold">signing in (/api/signin)</span>
 
   - [x] [/api/signin/admin](#apisigninadmin) `POST`
   - [x] [/api/signin/freelancer](#apisigninfreelancer) `POST`
   - [x] [/api/signin/client](#apisigninclient) `POST`
 
-- [signing up (/api/signup)](#apisignup-(signing-up))
+- #### <span style="color: green; font-weight: bold">signing up (/api/signup)</span>
 
   - [x] [/api/signup/freelancer](#apisignupfreelancer) `POST`
   - [x] [/api/signup/client](#apisignupclient) `POST`
 
-- [admin account (/api/admin)](#apiadmin-(admin-account))
+- #### <span style="color: green; font-weight: bold">admin account (/api/admin)</span>
 
   - [deleting accounts (/api/admin/account/delete)](#apiadminaccountdelete)
     - [x] [/api/admin/account/delete/freelancer](#apiadminaccountdeletefreelancer) `DELETE`
@@ -37,7 +39,7 @@
     - [x] [/api/admin/team/modify](#apiadminteammodify) `PUT`
     - [x] [/api/admin/team/delete](#apiadminteamdelete) `DELETE`
 
-- [freelancer account (/api/freelancer)](#apifreelancer-(freelancer-account))
+- #### <span style="color: green; font-weight: bold">freelancer account (/api/freelancer)</span>
 
   - [account information (/api/freelancer/account)](#apifreelanceraccount-(account-information))
     - [x] [/api/freelancer/account/modify](#apifreelanceraccountmodify) `PUT`
@@ -47,7 +49,7 @@
     - [x] [/api/freelancer/portfolio/getExternal](#apifreelancerportfoliogetexternal) `POST`
     - [x] [/api/freelancer/portfolio/registerExternal](#apifreelancerportfolioregisterexternal) `POST`
   - [projects (/api/freelancer/project)](#apifreelancerproject-(projects))
-    - [ ] [/api/freelancer/project/getAll](#apifreelancerprojectgetall) `GET`
+    - [x] [/api/freelancer/project/getAll](#apifreelancerprojectgetall) `GET`
     - [ ] [/api/freelancer/project/getForMe](#apifreelancerprojectgetforme) `POST`
     - [ ] [/api/freelancer/project/getInfo](#apifreelancerprojectgetinfo) `POST`
     - [ ] [/api/freelancer/project/apply](#apifreelancerprojectapply) `POST`
@@ -64,7 +66,7 @@
     - [ ] [/api/freelancer/finish/submit](#apifreelancerfinishsubmit) `POST`
     - [ ] [/api/freelancer/finish/rateClient](#apifreelancerfinishrateclient) `POST`
 
-- [client account (/api/client)](#apiclient-(client-account))
+- #### <span style="color: green; font-weight: bold">client account (/api/client)</span>
 
   - [projects (/api/client/project)](#apiclientproject-(projects))
     - [ ] [/api/client/project/register](#apiclientprojectregister) `POST`
@@ -296,6 +298,7 @@
           {
               "idx": project idx (1),
               "client_idx": client idx,
+              "name": project name,
               "start_date": start date,
               "end_date": end date,
               "min_part": # of minimum participants,
@@ -307,6 +310,7 @@
   		{
               "idx": project idx (2),
               "client_idx": client idx,
+              "name": project name,
               "start_date": start date,
               "end_date": end date,
               "min_part": # of minimum participants,
@@ -335,6 +339,7 @@
   {
       "admin_key": admin key,
       "project_idx": project idx (REQUIRED),
+      "name": project name (OPTIONAL),
       "start_date": start date (OPTIONAL),
       "end_date": end date (OPTIONAL),
       "min_part": # of minimum participants (OPTIONAL),
@@ -508,6 +513,7 @@
           {
               "idx": internal project idx,
               "client_idx": client idx,
+              "name": project name,
               "start_date": start date,
               "end_date": end date,
               "min_part": # of minimum participants,
@@ -519,6 +525,7 @@
           {
               "idx": internal project idx,
               "client_idx": client idx,
+              "name": project name,
               "start_date": start date,
               "end_date": end date,
               "min_part": # of minimum participants,
@@ -532,6 +539,7 @@
       "external": [
       	{
               "idx": external project idx,
+              "name": project name,
               "start_date": start date,
               "end_date": end date,
               "pay": pay in Korean Won,
@@ -540,6 +548,7 @@
           },
           {
               "idx": external project idx,
+              "name": project name,
               "start_date": start date,
               "end_date": end date,
               "pay": pay in Korean Won,
@@ -580,6 +589,7 @@
           {
               "idx": internal project idx (1),
               "client_idx": client idx,
+              "name": project name,
               "start_date": start date,
               "end_date": end date,
               "min_part": # of minimum participants,
@@ -591,6 +601,7 @@
           {
               "idx": internal project idx (2),
               "client_idx": client idx,
+              "name": project name,
               "start_date": start date,
               "end_date": end date,
               "min_part": # of minimum participants,
@@ -632,6 +643,7 @@
       "external": [
           {
               "idx": external project idx (1),
+              "name": project name,
               "start_date": start date,
               "end_date": end date,
               "pay": pay in Korean Won,
@@ -640,6 +652,7 @@
           },
           {
               "idx": external project idx (2),
+              "name": project name,
               "start_date": start date,
               "end_date": end date,
               "pay": pay in Korean Won,
@@ -662,6 +675,7 @@
   ```
   {
       "freelancer_idx": freelancer idx (REQUIRED),
+      "name": project name (REQUIRED),
       "start_date": start date (YYYY-MM-DD) (REQUIRED),
       "end_date": end date (YYYY-MM-DD) (REQUIRED),
       "pay": pay in Korean Won (integer) (REQUIRED),
@@ -702,6 +716,7 @@
           {
               "idx": project idx (1),
               "client_idx": client idx,
+              "name": project name,
               "start_date": start date,
               "end_date": end date,
               "min_part": # of minimum participants,
@@ -713,6 +728,7 @@
   		{
               "idx": project idx (2),
               "client_idx": client idx,
+              "name": project name,
               "start_date": start date,
               "end_date": end date,
               "min_part": # of minimum participants,
@@ -752,6 +768,7 @@
           {
               "idx": project idx (1),
               "client_idx": client idx,
+              "name": project name,
               "start_date": start date,
               "end_date": end date,
               "min_part": # of minimum participants,
@@ -763,6 +780,7 @@
   		{
               "idx": project idx (2),
               "client_idx": client idx,
+              "name": project name,
               "start_date": start date,
               "end_date": end date,
               "min_part": # of minimum participants,
@@ -795,15 +813,18 @@
   ```
   {
       "success": true / false,
-      "idx": project idx,
-      "client_idx": client idx,
-      "start_date": start date,
-      "end_date": end date,
-      "min_part": # of minimum participants,
-      "max_part": # of maximum participants,
-      "experience": # years experience required,
-      "pay": pay in Korean Won,
-      "req_doc": blob of request document if exists,
+      "project": {
+          "idx": project idx,
+      	"client_idx": client idx,
+      	"name": project name,
+      	"start_date": start date,
+      	"end_date": end date,
+      	"min_part": # of minimum participants,
+      	"max_part": # of maximum participants,
+      	"experience": # years experience required,
+      	"pay": pay in Korean Won,
+      	"req_doc": blob of request document if exists
+      },
       "language_req": [
           {
               "language": name of programming language,
@@ -872,6 +893,7 @@
           {
               "idx": project idx (1),
               "client_idx": client idx,
+              "name": project name,
               "start_date": start date,
               "end_date": end date,
               "min_part": # of minimum participants,
@@ -883,6 +905,7 @@
   		{
               "idx": project idx (2),
               "client_idx": client idx,
+              "name": project name,
               "start_date": start date,
               "end_date": end date,
               "min_part": # of minimum participants,
@@ -920,6 +943,7 @@
           {
               "idx": project idx (1),
               "client_idx": client idx,
+              "name": project name,
               "start_date": start date,
               "end_date": end date,
               "min_part": # of minimum participants,
@@ -931,6 +955,7 @@
   		{
               "idx": project idx (2),
               "client_idx": client idx,
+              "name": project name,
               "start_date": start date,
               "end_date": end date,
               "min_part": # of minimum participants,
@@ -1184,6 +1209,7 @@
   ```
   {
       "client_idx": client idx,
+      "name": project name,
       "start_date": start date,
       "end_date": end date,
       "min_part": # of minimum participants,
@@ -1228,6 +1254,7 @@
       current: [
           {
           	"idx": project idx (1),
+          	"name": project name,
               "start_date": start date,
               "end_date": end date,
               "min_part": # of minimum participants,
@@ -1239,6 +1266,7 @@
           },
           {
           	"idx": project idx (2),
+          	"name": project name,
               "start_date": start date,
               "end_date": end date,
               "min_part": # of minimum participants,
@@ -1278,6 +1306,7 @@
       registered: [
           {
           	"idx": project idx (1),
+          	"name": project name,
               "start_date": start date,
               "end_date": end date,
               "min_part": # of minimum participants,
@@ -1288,6 +1317,7 @@
           },
           {
           	"idx": project idx (2),
+          	"name": project name,
               "start_date": start date,
               "end_date": end date,
               "min_part": # of minimum participants,
@@ -1326,6 +1356,7 @@
       completed: [
           {
           	"idx": project idx (1),
+          	"name": project name,
               "start_date": start date,
               "end_date": end date,
               "min_part": # of minimum participants,
@@ -1337,6 +1368,7 @@
           },
           {
           	"idx": project idx (2),
+          	"name": project name,
               "start_date": start date,
               "end_date": end date,
               "min_part": # of minimum participants,
@@ -1505,6 +1537,7 @@
       "completed": [
           {
           	"idx": project idx (1),
+          	"name": project name,
               "start_date": start date,
               "end_date": end date,
               "min_part": # of minimum participants,
@@ -1516,6 +1549,7 @@
           },
           {
           	"idx": project idx (2),
+          	"name": project name,
               "start_date": start date,
               "end_date": end date,
               "min_part": # of minimum participants,
@@ -1619,6 +1653,7 @@
     - When its `status` becomes 'completed', `client` and `freelancer` or `team` can rate each other
 
 ```mysql
+
 -- Freelancer Table Create SQL
 CREATE TABLE Freelancer
 (
@@ -1653,6 +1688,7 @@ CREATE TABLE Internal_project
 (
   `idx`         INT       NOT NULL    AUTO_INCREMENT,
   `client_idx`  INT       NOT NULL    COMMENT 'Client idx',
+  `name`        VARCHAR(255) NOT NULL COMMENT 'Project name',
   `start_date`  DATE      NOT NULL    COMMENT 'Start date',
   `end_date`    DATE      NOT NULL    COMMENT 'End date',
   `min_part`    INT       NOT NULL    COMMENT 'Minimum participants',
@@ -1660,7 +1696,7 @@ CREATE TABLE Internal_project
   `experience`  INT       NOT NULL    COMMENT 'Years of experience',
   `pay`         DOUBLE    NOT NULL    COMMENT 'Pay',
   `registered_at` TIMESTAMP NOT NULL DEFAULT NOW(),
-  `req_doc`     BLOB      NOT NULL    COMMENT 'Request document',
+  `req_doc`     BLOB      NULL    COMMENT 'Request document',
   `status`      VARCHAR(15) NOT NULL COMMENT 'Status',
   `client_rating` DOUBLE NULL COMMENT 'Rating on client by freelancer',
   `freelancer_rating` DOUBLE NULL COMMENT 'Rating on freelancer by client',
@@ -1695,6 +1731,7 @@ CREATE TABLE External_project
 (
   `idx`         INT             NOT NULL    AUTO_INCREMENT,
   `freelancer_idx`  INT    NOT NULL,
+  `name` VARCHAR(255) NOT NULL COMMENT 'Project name',
   `start_date`  DATE            NOT NULL    COMMENT 'Start date',
   `end_date`    DATE            NOT NULL    COMMENT 'End date',
   `pay`         DOUBLE          NOT NULL    COMMENT 'Pay',
@@ -1715,21 +1752,21 @@ CREATE TABLE Admin
 );
 
 
+
 -- Portfolio Table Create SQL
--- `int_or_ext` 1 is internal, 0 is external
-CREATE TABLE Portfolio
+-- Internal projects completed by freelancer or team
+CREATE TABLE Completed_project
 (
-  `freelancer_idx`   INT    NOT NULL,
-  `int_or_ext`       BIT    NOT NULL,
-  `int_project_idx`  INT    NULL,
-  `ext_project_idx`  INT    NULL,
-  FOREIGN KEY (int_project_idx)
+  `project_idx`  INT    NOT NULL,
+  `freelancer_idx`   INT    NULL,
+  `team_idx` INT NULL,
+  FOREIGN KEY (project_idx)
   REFERENCES Internal_project (idx)  ON DELETE CASCADE ON UPDATE CASCADE,
-  FOREIGN KEY (ext_project_idx)
-  REFERENCES External_project (idx)  ON DELETE CASCADE ON UPDATE CASCADE,
   FOREIGN KEY (freelancer_idx)
   REFERENCES Freelancer (idx)  ON DELETE CASCADE ON UPDATE CASCADE,
-  UNIQUE(freelancer_idx, int_project_idx, ext_project_idx)
+  FOREIGN KEY (team_idx)
+  REFERENCES Team (idx) ON DELETE CASCADE ON UPDATE CASCADE,
+  UNIQUE(project_idx, freelancer_idx, team_idx)
 );
 
 
@@ -1751,13 +1788,14 @@ CREATE TABLE Team_member
 -- Programming_language_knowledge Table Create SQL
 CREATE TABLE Programming_language_knowledge
 (
-  `language_idx`    INT    NOT NULL,
   `freelancer_idx`  INT    NOT NULL,
+  `language_idx`    INT    NOT NULL,
   `proficiency`     INT    NOT NULL,
   FOREIGN KEY (language_idx)
   REFERENCES Programming_language (idx)  ON DELETE CASCADE ON UPDATE CASCADE,
   FOREIGN KEY (freelancer_idx)
-  REFERENCES Freelancer (idx)  ON DELETE CASCADE ON UPDATE CASCADE
+  REFERENCES Freelancer (idx)  ON DELETE CASCADE ON UPDATE CASCADE,
+  UNIQUE(language_idx, freelancer_idx)
 );
 
 

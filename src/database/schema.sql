@@ -33,6 +33,7 @@ CREATE TABLE Internal_project
 (
   `idx`         INT       NOT NULL    AUTO_INCREMENT,
   `client_idx`  INT       NOT NULL    COMMENT 'Client idx',
+  `name`        VARCHAR(255) NOT NULL COMMENT 'Project name',
   `start_date`  DATE      NOT NULL    COMMENT 'Start date',
   `end_date`    DATE      NOT NULL    COMMENT 'End date',
   `min_part`    INT       NOT NULL    COMMENT 'Minimum participants',
@@ -40,7 +41,7 @@ CREATE TABLE Internal_project
   `experience`  INT       NOT NULL    COMMENT 'Years of experience',
   `pay`         DOUBLE    NOT NULL    COMMENT 'Pay',
   `registered_at` TIMESTAMP NOT NULL DEFAULT NOW(),
-  `req_doc`     BLOB      NOT NULL    COMMENT 'Request document',
+  `req_doc`     BLOB      NULL    COMMENT 'Request document',
   `status`      VARCHAR(15) NOT NULL COMMENT 'Status',
   `client_rating` DOUBLE NULL COMMENT 'Rating on client by freelancer',
   `freelancer_rating` DOUBLE NULL COMMENT 'Rating on freelancer by client',
@@ -75,6 +76,7 @@ CREATE TABLE External_project
 (
   `idx`         INT             NOT NULL    AUTO_INCREMENT,
   `freelancer_idx`  INT    NOT NULL,
+  `name` VARCHAR(255) NOT NULL COMMENT 'Project name',
   `start_date`  DATE            NOT NULL    COMMENT 'Start date',
   `end_date`    DATE            NOT NULL    COMMENT 'End date',
   `pay`         DOUBLE          NOT NULL    COMMENT 'Pay',
@@ -131,13 +133,14 @@ CREATE TABLE Team_member
 -- Programming_language_knowledge Table Create SQL
 CREATE TABLE Programming_language_knowledge
 (
-  `language_idx`    INT    NOT NULL,
   `freelancer_idx`  INT    NOT NULL,
+  `language_idx`    INT    NOT NULL,
   `proficiency`     INT    NOT NULL,
   FOREIGN KEY (language_idx)
   REFERENCES Programming_language (idx)  ON DELETE CASCADE ON UPDATE CASCADE,
   FOREIGN KEY (freelancer_idx)
-  REFERENCES Freelancer (idx)  ON DELETE CASCADE ON UPDATE CASCADE
+  REFERENCES Freelancer (idx)  ON DELETE CASCADE ON UPDATE CASCADE,
+  UNIQUE(language_idx, freelancer_idx)
 );
 
 
