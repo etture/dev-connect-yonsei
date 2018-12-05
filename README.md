@@ -14,18 +14,18 @@
 
 # API Endpoints
 
-- <span style="color: green; font-weight: bold">signing in (/api/signin)</span>
+- #### <span style="color: green; font-weight: bold">signing in (/api/signin)</span>
 
   - [x] [/api/signin/admin](#apisigninadmin) `POST`
   - [x] [/api/signin/freelancer](#apisigninfreelancer) `POST`
   - [x] [/api/signin/client](#apisigninclient) `POST`
 
-- <span style="color: green; font-weight: bold">signing up (/api/signup)</span>
+- #### <span style="color: green; font-weight: bold">signing up (/api/signup)</span>
 
   - [x] [/api/signup/freelancer](#apisignupfreelancer) `POST`
   - [x] [/api/signup/client](#apisignupclient) `POST`
 
-- <span style="color: green; font-weight: bold">admin account (/api/admin)</span>
+- #### <span style="color: green; font-weight: bold">admin account (/api/admin)</span>
 
   - [deleting accounts (/api/admin/account/delete)](#apiadminaccountdelete)
     - [x] [/api/admin/account/delete/freelancer](#apiadminaccountdeletefreelancer) `DELETE`
@@ -39,7 +39,7 @@
     - [x] [/api/admin/team/modify](#apiadminteammodify) `PUT`
     - [x] [/api/admin/team/delete](#apiadminteamdelete) `DELETE`
 
-- <span style="color: green; font-weight: bold">freelancer account (/api/freelancer)</span>
+- #### <span style="color: green; font-weight: bold">freelancer account (/api/freelancer)</span>
 
   - [account information (/api/freelancer/account)](#apifreelanceraccount-(account-information))
     - [x] [/api/freelancer/account/modify](#apifreelanceraccountmodify) `PUT`
@@ -51,10 +51,10 @@
   - [projects (/api/freelancer/project)](#apifreelancerproject-(projects))
     - [x] [/api/freelancer/project/getAll](#apifreelancerprojectgetall) `GET`
     - [x] [/api/freelancer/project/getForMe](#apifreelancerprojectgetforme) `POST`
-    - [ ] [/api/freelancer/project/getInfo](#apifreelancerprojectgetinfo) `POST`
-    - [ ] [/api/freelancer/project/apply](#apifreelancerprojectapply) `POST`
-    - [ ] [/api/freelancer/project/getApplied](#apifreelancerprojectgetapplied) `POST`
-    - [ ] [/api/freelancer/project/getCurrent](#apifreelancerprojectgetcurrent) `POST`
+    - [x] [/api/freelancer/project/getInfo](#apifreelancerprojectgetinfo) `POST`
+    - [x] [/api/freelancer/project/apply](#apifreelancerprojectapply) `POST`
+    - [x] [/api/freelancer/project/getApplied](#apifreelancerprojectgetapplied) `POST`
+    - [x] [/api/freelancer/project/getCurrent](#apifreelancerprojectgetcurrent) `POST`
   - [related to teams (/api/freelancer/team)](#apifreelancerteam-(related-to-teams))
     - [ ] [/api/freelancer/team/create](#apifreelancerteamcreate) `POST`
     - [ ] [/api/freelancer/team/join](#apifreelancerteamjoin) `POST`
@@ -66,7 +66,7 @@
     - [ ] [/api/freelancer/finish/submit](#apifreelancerfinishsubmit) `POST`
     - [ ] [/api/freelancer/finish/rateClient](#apifreelancerfinishrateclient) `POST`
 
-- <span style="color: green; font-weight: bold">client account (/api/client)</span>
+- #### <span style="color: green; font-weight: bold">client account (/api/client)</span>
 
   - [projects (/api/client/project)](#apiclientproject-(projects))
     - [ ] [/api/client/project/register](#apiclientprojectregister) `POST`
@@ -1800,6 +1800,7 @@ CREATE TABLE Programming_language_knowledge
 
 
 -- Internal_project_language_requirement Table Create SQL
+-- `single_or_team` either of "single", "team", or "both"
 CREATE TABLE Internal_project_language_requirement
 (
   `project_idx`   INT    NOT NULL,
@@ -1818,8 +1819,7 @@ CREATE TABLE Internal_project_language_requirement
 CREATE TABLE Current_project
 (
   `project_idx`     INT    NOT NULL,
-  `single_only`     BIT    NOT NULL,
-  `team_only`       BIT    NOT NULL,
+  `single_or_team`  VARCHAR(15)    NOT NULL,
   `freelancer_idx`  INT    NULL,
   `team_idx`        INT    NULL,
   FOREIGN KEY (freelancer_idx)

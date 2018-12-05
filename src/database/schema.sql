@@ -160,11 +160,11 @@ CREATE TABLE Internal_project_language_requirement
 
 
 -- Current_project Table Create SQL
+-- `single_or_team` either of "single", "team", or "both"
 CREATE TABLE Current_project
 (
   `project_idx`     INT    NOT NULL,
-  `single_only`     BIT    NOT NULL,
-  `team_only`       BIT    NOT NULL,
+  `single_or_team`  VARCHAR(15)    NOT NULL,
   `freelancer_idx`  INT    NULL,
   `team_idx`        INT    NULL,
   FOREIGN KEY (freelancer_idx)
@@ -189,3 +189,5 @@ CREATE TABLE Application (
   REFERENCES Team (idx)  ON DELETE CASCADE ON UPDATE CASCADE,
   UNIQUE (project_idx, freelancer_idx, team_idx)
 )
+
+SELECT * FROM Internal_project;
