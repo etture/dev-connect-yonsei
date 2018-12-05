@@ -14,18 +14,18 @@
 
 # API Endpoints
 
-- #### <span style="color: green; font-weight: bold">signing in (/api/signin)</span>
+- <span style="color: green; font-weight: bold">signing in (/api/signin)</span>
 
   - [x] [/api/signin/admin](#apisigninadmin) `POST`
   - [x] [/api/signin/freelancer](#apisigninfreelancer) `POST`
   - [x] [/api/signin/client](#apisigninclient) `POST`
 
-- #### <span style="color: green; font-weight: bold">signing up (/api/signup)</span>
+- <span style="color: green; font-weight: bold">signing up (/api/signup)</span>
 
   - [x] [/api/signup/freelancer](#apisignupfreelancer) `POST`
   - [x] [/api/signup/client](#apisignupclient) `POST`
 
-- #### <span style="color: green; font-weight: bold">admin account (/api/admin)</span>
+- <span style="color: green; font-weight: bold">admin account (/api/admin)</span>
 
   - [deleting accounts (/api/admin/account/delete)](#apiadminaccountdelete)
     - [x] [/api/admin/account/delete/freelancer](#apiadminaccountdeletefreelancer) `DELETE`
@@ -39,7 +39,7 @@
     - [x] [/api/admin/team/modify](#apiadminteammodify) `PUT`
     - [x] [/api/admin/team/delete](#apiadminteamdelete) `DELETE`
 
-- #### <span style="color: green; font-weight: bold">freelancer account (/api/freelancer)</span>
+- <span style="color: green; font-weight: bold">freelancer account (/api/freelancer)</span>
 
   - [account information (/api/freelancer/account)](#apifreelanceraccount-(account-information))
     - [x] [/api/freelancer/account/modify](#apifreelanceraccountmodify) `PUT`
@@ -50,7 +50,7 @@
     - [x] [/api/freelancer/portfolio/registerExternal](#apifreelancerportfolioregisterexternal) `POST`
   - [projects (/api/freelancer/project)](#apifreelancerproject-(projects))
     - [x] [/api/freelancer/project/getAll](#apifreelancerprojectgetall) `GET`
-    - [ ] [/api/freelancer/project/getForMe](#apifreelancerprojectgetforme) `POST`
+    - [x] [/api/freelancer/project/getForMe](#apifreelancerprojectgetforme) `POST`
     - [ ] [/api/freelancer/project/getInfo](#apifreelancerprojectgetinfo) `POST`
     - [ ] [/api/freelancer/project/apply](#apifreelancerprojectapply) `POST`
     - [ ] [/api/freelancer/project/getApplied](#apifreelancerprojectgetapplied) `POST`
@@ -66,7 +66,7 @@
     - [ ] [/api/freelancer/finish/submit](#apifreelancerfinishsubmit) `POST`
     - [ ] [/api/freelancer/finish/rateClient](#apifreelancerfinishrateclient) `POST`
 
-- #### <span style="color: green; font-weight: bold">client account (/api/client)</span>
+- <span style="color: green; font-weight: bold">client account (/api/client)</span>
 
   - [projects (/api/client/project)](#apiclientproject-(projects))
     - [ ] [/api/client/project/register](#apiclientprojectregister) `POST`
