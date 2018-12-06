@@ -28,9 +28,9 @@
 - #### <span style="color: green; font-weight: bold">admin account (/api/admin)</span>
 
   - seeing list of accounts
-    - [x] [/api/admin/getFreelancers](#apiadmingetfreelancers) `GET`
-    - [x] [/api/admin/getClients](#apiadmingetclients) `GET`
-    - [x] [/api/admin/getAllUsers](#apiadmingetallusers) `GET`
+    - [x] [/api/admin/getFreelancers](#apiadmingetfreelancers) `POST`
+    - [x] [/api/admin/getClients](#apiadmingetclients) `POST`
+    - [x] [/api/admin/getAllUsers](#apiadmingetallusers) `POST`
   - deleting accounts (/api/admin/account/delete)
     - [x] [/api/admin/account/delete/freelancer](#apiadminaccountdeletefreelancer) `DELETE`
     - [x] [/api/admin/account/delete/client](#apiadminaccountdeleteclient) `DELETE`
@@ -231,7 +231,7 @@
 
 - get list of all freelancers
 
-- `GET`
+- `POST`
 
 - request body
 
@@ -276,7 +276,7 @@
 
 - get list of all clients
 
-- `GET`
+- `POST`
 
 - request body
 
@@ -315,7 +315,7 @@
 
 - get list of all users
 
-- `GET`
+- `POST`
 
 - request body
 

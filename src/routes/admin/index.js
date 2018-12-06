@@ -12,8 +12,8 @@ router.use('/project', project);
 router.use('/team', team);
 
 // see list of accounts
-router.get('/getFreelancers', AccountController.getFreelancers);
-router.get('/getClients', AccountController.getClients);
-router.get('/getAllUsers', AccountController.getAllUsers);
+router.post('/getFreelancers', AccountController.getFreelancers);
+router.post('/getClients', AccountController.getClients);
+router.post('/getAllUsers', AccountController.getAllUsers);
 
 module.exports = router;
