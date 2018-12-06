@@ -62,10 +62,10 @@
     - [x] [/api/freelancer/team/getForTeam](#apifreelancerteamgetforteam)`POST`
     - [x] [/api/freelancer/team/apply](#apifreelancerteamapply) `POST`
     - [x] [/api/freelancer/team/finish/submit](#apifreelancerteamfinishsubmit) `POST`
-    - [ ] [/api/freelancer/team/finish/rateClient](#apifreelancerteamfinishrateclient) `POST`
+    - [x] [/api/freelancer/team/finish/rateClient](#apifreelancerteamfinishrateclient) `POST`
   - [submitting a request to finish a project (/api/freelancer/finish)](#apifreelancerfinish-(submitting-a-request-to-finish-a-project))
-    - [ ] [/api/freelancer/finish/submit](#apifreelancerfinishsubmit) `POST`
-    - [ ] [/api/freelancer/finish/rateClient](#apifreelancerfinishrateclient) `POST`
+    - [x] [/api/freelancer/finish/submit](#apifreelancerfinishsubmit) `POST`
+    - [x] [/api/freelancer/finish/rateClient](#apifreelancerfinishrateclient) `POST`
 
 - #### <span style="color: green; font-weight: bold">client account (/api/client)</span>
 
@@ -1807,9 +1807,11 @@ CREATE TABLE Admin
 
 -- Portfolio Table Create SQL
 -- Internal projects completed by freelancer or team
+-- `freelancer_or_team` either of "freelancer" or "team"
 CREATE TABLE Completed_project
 (
   `project_idx`  INT    NOT NULL,
+  `freelancer_or_team`  VARCHAR(15)    NOT NULL,
   `freelancer_idx`   INT    NULL,
   `team_idx` INT NULL,
   FOREIGN KEY (project_idx)
