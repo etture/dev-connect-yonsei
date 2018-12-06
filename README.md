@@ -27,10 +27,13 @@
 
 - #### <span style="color: green; font-weight: bold">admin account (/api/admin)</span>
 
+  - seeing list of accounts
+    - [ ] [/api/admin/getFreelancers](#apiadmingetfreelancers) `GET`
+    - [ ] [/api/admin/getClients](#apiadmingetclients) `GET`
+    - [ ] [/api/admin/getAllUsers](#apiadmingetallusers) `GET`
   - [deleting accounts (/api/admin/account/delete)](#apiadminaccountdelete)
     - [x] [/api/admin/account/delete/freelancer](#apiadminaccountdeletefreelancer) `DELETE`
     - [x] [/api/admin/account/delete/client](#apiadminaccountdeleteclient) `DELETE`
-
   - [dealing with projects (/api/admin/project)](#apiadminproject-(dealing-with-projects))
       - [x] [/api/admin/project/getAll](#apiadminprojectgetall) `GET`
       - [x] [/api/admin/project/modify](#apiadminprojectmodify) `PUT`
@@ -221,6 +224,155 @@
   ```
 
 ## /api/admin (admin account)
+
+### seeing list of accounts
+
+##### /api/admin/getFreelancers
+
+- get list of all freelancers
+
+- `GET`
+
+- request body
+
+  ```
+  {
+  	"admin_key": admin key
+  }
+  ```
+
+- response body
+
+  ```
+  {
+      "success": true / false,
+      "freelancers": [
+          {
+          	"idx": idx (1),
+              "email": email,
+              "name": name,
+              "age": age,
+              "major": major,
+              "phone": phone number (string), 
+              "experience": # of years of experience,
+              "rating": float or null
+          },
+          {
+          	"idx": idx (2),
+              "email": email,
+              "name": name,
+              "age": age,
+              "major": major,
+              "phone": phone number (string), 
+              "experience": # of years of experience,
+              "rating": float or null
+          },
+          ...
+      ]
+  }
+  ```
+
+##### /api/admin/getClients
+
+- get list of all clients
+
+- `GET`
+
+- request body
+
+  ```
+  {
+      "admin_key": admin key
+  }
+  ```
+
+- response body
+
+  ```
+  {
+      "success": true / false,
+      "clients": [
+          {
+              "idx": idx (1),
+              "email": email address,
+              "name": name,
+              "phone": phone number,
+              "rating": float or null
+          },
+          {
+              "idx": idx (2),
+              "email": email address,
+              "name": name,
+              "phone": phone number,
+              "rating": float or null
+          },
+          ...
+      ]
+  }
+  ```
+
+##### /api/admin/getAllUsers
+
+- get list of all users
+
+- `GET`
+
+- request body
+
+  ```
+  {
+      "admin_key": admin key
+  }
+  ```
+
+- response body
+
+  ```
+  {
+      "success": true / false,
+      "freelancers": [
+          {
+          	"idx": idx (1),
+              "email": email,
+              "name": name,
+              "age": age,
+              "major": major,
+              "phone": phone number (string), 
+              "experience": # of years of experience,
+              "rating": float or null
+          },
+          {
+          	"idx": idx (2),
+              "email": email,
+              "name": name,
+              "age": age,
+              "major": major,
+              "phone": phone number (string), 
+              "experience": # of years of experience,
+              "rating": float or null
+          },
+          ...
+      ],
+      "clients": [
+          {
+              "idx": idx (1),
+              "email": email address,
+              "name": name,
+              "phone": phone number,
+              "rating": float or null
+          },
+          {
+              "idx": idx (2),
+              "email": email address,
+              "name": name,
+              "phone": phone number,
+              "rating": float or null
+          },
+          ...
+      ]
+  }
+  ```
+
 
 ### /api/admin/account
 
