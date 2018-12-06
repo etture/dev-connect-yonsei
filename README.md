@@ -28,37 +28,37 @@
 - #### <span style="color: green; font-weight: bold">admin account (/api/admin)</span>
 
   - seeing list of accounts
-    - [ ] [/api/admin/getFreelancers](#apiadmingetfreelancers) `GET`
-    - [ ] [/api/admin/getClients](#apiadmingetclients) `GET`
-    - [ ] [/api/admin/getAllUsers](#apiadmingetallusers) `GET`
-  - [deleting accounts (/api/admin/account/delete)](#apiadminaccountdelete)
+    - [x] [/api/admin/getFreelancers](#apiadmingetfreelancers) `GET`
+    - [x] [/api/admin/getClients](#apiadmingetclients) `GET`
+    - [x] [/api/admin/getAllUsers](#apiadmingetallusers) `GET`
+  - deleting accounts (/api/admin/account/delete)
     - [x] [/api/admin/account/delete/freelancer](#apiadminaccountdeletefreelancer) `DELETE`
     - [x] [/api/admin/account/delete/client](#apiadminaccountdeleteclient) `DELETE`
-  - [dealing with projects (/api/admin/project)](#apiadminproject-(dealing-with-projects))
+  - dealing with projects (/api/admin/project)
       - [x] [/api/admin/project/getAll](#apiadminprojectgetall) `GET`
       - [x] [/api/admin/project/modify](#apiadminprojectmodify) `PUT`
       - [x] [/api/admin/project/delete](#apiadminprojectdelete) `DELETE`
-  - [dealing with teams (/api/admin/team)](#apiadminteam-(dealing-with-teams)) 
+  - dealing with teams (/api/admin/team) 
     - [x] [/api/admin/team/modify](#apiadminteammodify) `PUT`
     - [x] [/api/admin/team/delete](#apiadminteamdelete) `DELETE`
 
 - #### <span style="color: green; font-weight: bold">freelancer account (/api/freelancer)</span>
 
-  - [account information (/api/freelancer/account)](#apifreelanceraccount-(account-information))
+  - account information (/api/freelancer/account)
     - [x] [/api/freelancer/account/modify](#apifreelanceraccountmodify) `PUT`
-  - [project portfolio (/api/freelancer/portfolio)](#apifreelancerportfolio-(project-portfolio))
+  - project portfolio (/api/freelancer/portfolio)
     - [x] [/api/freelancer/portfolio/getAll](#apifreelancerportfoliogetall) `POST`
     - [x] [/api/freelancer/portfolio/getInternal](#apifreelancerportfoliogetInternal) `POST`
     - [x] [/api/freelancer/portfolio/getExternal](#apifreelancerportfoliogetexternal) `POST`
     - [x] [/api/freelancer/portfolio/registerExternal](#apifreelancerportfolioregisterexternal) `POST`
-  - [projects (/api/freelancer/project)](#apifreelancerproject-(projects))
+  - projects (/api/freelancer/project)
     - [x] [/api/freelancer/project/getAll](#apifreelancerprojectgetall) `GET`
     - [x] [/api/freelancer/project/getForMe](#apifreelancerprojectgetforme) `POST`
     - [x] [/api/freelancer/project/getInfo](#apifreelancerprojectgetinfo) `POST`
     - [x] [/api/freelancer/project/apply](#apifreelancerprojectapply) `POST`
     - [x] [/api/freelancer/project/getApplied](#apifreelancerprojectgetapplied) `POST`
     - [x] [/api/freelancer/project/getCurrent](#apifreelancerprojectgetcurrent) `POST`
-  - [related to teams (/api/freelancer/team)](#apifreelancerteam-(related-to-teams))
+  - related to teams (/api/freelancer/team)
     - [x] [/api/freelancer/team/create](#apifreelancerteamcreate) `POST`
     - [x] [/api/freelancer/team/join](#apifreelancerteamjoin) `POST`
     - [x] [/api/freelancer/team/leave](#apifreelancerteamleave) `POST`
@@ -66,20 +66,20 @@
     - [x] [/api/freelancer/team/apply](#apifreelancerteamapply) `POST`
     - [x] [/api/freelancer/team/finish/submit](#apifreelancerteamfinishsubmit) `POST`
     - [x] [/api/freelancer/team/finish/rateClient](#apifreelancerteamfinishrateclient) `POST`
-  - [submitting a request to finish a project (/api/freelancer/finish)](#apifreelancerfinish-(submitting-a-request-to-finish-a-project))
+  - submitting a request to finish a project (/api/freelancer/finish)
     - [x] [/api/freelancer/finish/submit](#apifreelancerfinishsubmit) `POST`
     - [x] [/api/freelancer/finish/rateClient](#apifreelancerfinishrateclient) `POST`
 
 - #### <span style="color: green; font-weight: bold">client account (/api/client)</span>
 
-  - [projects (/api/client/project)](#apiclientproject-(projects))
+  - projects (/api/client/project)
     - [x] [/api/client/project/register](#apiclientprojectregister) `POST`
     - [x] [/api/client/project/getCurrent](#apiclientprojectgetcurrent) `POST`
     - [x] [/api/client/project/getRegistered](#apiclientprojectgetregistered) `POST`
     - [x] [/api/client/project/getCompleted](#apiclientprojectgetcompleted) `POST`
     - [ ] [/api/client/project/getApplicants](#apiclientprojectgetapplicants) `POST`
     - [ ] [/api/client/project/acceptApplicant](#apiclientprojectacceptapplicant) `POST`
-  - [responding to a request to finish a project (/api/client/finish)](#apiclientfinish-(submitting-a-request-to-finish-a-project))
+  - responding to a request to finish a project (/api/client/finish)
       - [ ] [/api/client/finish/getSubmissions](#apiclientfinishgetsubmissions) `POST`
       - [ ] [/api/client/finish/accept](#apiclientfinishaccept) `POST`
       - [ ] [/api/client/finish/reject](#apiclientfinishreject) `POST`
