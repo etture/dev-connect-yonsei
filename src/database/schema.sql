@@ -117,6 +117,7 @@ CREATE TABLE Completed_project
 
 
 -- Team_member Table Create SQL
+-- The team leader cannot leave unless the leader is changed first
 CREATE TABLE Team_member
 (
   `team_idx`        INT    NOT NULL,

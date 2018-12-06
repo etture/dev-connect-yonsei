@@ -56,10 +56,11 @@
     - [x] [/api/freelancer/project/getApplied](#apifreelancerprojectgetapplied) `POST`
     - [x] [/api/freelancer/project/getCurrent](#apifreelancerprojectgetcurrent) `POST`
   - [related to teams (/api/freelancer/team)](#apifreelancerteam-(related-to-teams))
-    - [ ] [/api/freelancer/team/create](#apifreelancerteamcreate) `POST`
-    - [ ] [/api/freelancer/team/join](#apifreelancerteamjoin) `POST`
-    - [ ] [/api/freelancer/team/leave](#apifreelancerteamleave) `POST`
-    - [ ] [/api/freelancer/team/apply](#apifreelancerteamapply) `POST`
+    - [x] [/api/freelancer/team/create](#apifreelancerteamcreate) `POST`
+    - [x] [/api/freelancer/team/join](#apifreelancerteamjoin) `POST`
+    - [x] [/api/freelancer/team/leave](#apifreelancerteamleave) `POST`
+    - [x] [/api/freelancer/team/getForTeam](#apifreelancerteamgetforteam)`POST`
+    - [x] [/api/freelancer/team/apply](#apifreelancerteamapply) `POST`
     - [ ] [/api/freelancer/team/finish/submit](#apifreelancerteamfinishsubmit) `POST`
     - [ ] [/api/freelancer/team/finish/rateClient](#apifreelancerteamfinishrateclient) `POST`
   - [submitting a request to finish a project (/api/freelancer/finish)](#apifreelancerfinish-(submitting-a-request-to-finish-a-project))
@@ -75,7 +76,7 @@
     - [ ] [/api/client/project/getCompleted](#apiclientprojectgetcompleted) `POST`
     - [ ] [/api/client/project/getApplicants](#apiclientprojectgetapplicants) `POST`
     - [ ] [/api/client/project/acceptApplicant](#apiclientprojectacceptapplicant) `POST`
-  - [submitting a request to finish a project (/api/client/finish)](#apiclientfinish-(submitting-a-request-to-finish-a-project))
+  - [responding to a request to finish a project (/api/client/finish)](#apiclientfinish-(submitting-a-request-to-finish-a-project))
       - [ ] [/api/client/finish/getSubmissions](#apiclientfinishgetsubmissions) `POST`
       - [ ] [/api/client/finish/accept](#apiclientfinishaccept) `POST`
       - [ ] [/api/client/finish/reject](#apiclientfinishreject) `POST`
@@ -1043,6 +1044,57 @@
   {
       "success": true / false,
       "error_message": error message if failed
+  }
+  ```
+
+#### /api/freelancer/team/getForTeam
+
+- get the list of projects that a particular team can apply for
+
+- `POST`
+
+- request body
+
+  - must include team idx
+
+  ```
+  {
+      "team_idx": team idx
+  }
+  ```
+
+- response body
+
+  ```
+  {
+      "success": true / false,
+      "projects": [
+          {
+              "idx": project idx (1),
+              "client_idx": client idx,
+              "name": project name,
+              "start_date": start date,
+              "end_date": end date,
+              "min_part": # of minimum participants,
+              "max_part": # of maximum participants,
+              "experience": # years experience required,
+              "pay": pay in Korean Won,
+              "req_doc": blob of request document if exists
+          },
+  		{
+              "idx": project idx (2),
+              "client_idx": client idx,
+              "name": project name,
+              "start_date": start date,
+              "end_date": end date,
+              "min_part": # of minimum participants,
+              "max_part": # of maximum participants,
+              "experience": # years experience required,
+              "pay": pay in Korean Won,
+              "req_doc": blob of request document if exists
+          },
+  		...
+      ]
   }
   ```
 

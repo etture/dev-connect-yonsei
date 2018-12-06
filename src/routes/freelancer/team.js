@@ -6,6 +6,7 @@ const TeamController = require('../../controllers/freelancer/teamController');
 router.post('/create', TeamController.create);
 router.post('/join', TeamController.join);
 router.post('/leave', TeamController.leave);
+router.post('/getForTeam', TeamController.getForTeam);
 router.post('/apply', TeamController.apply);
 router.post('/finish/submit', TeamController.submit);
 router.post('/finish/rateClient', TeamController.rateClient);
