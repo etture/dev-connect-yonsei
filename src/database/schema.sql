@@ -100,9 +100,11 @@ CREATE TABLE Admin
 
 -- Portfolio Table Create SQL
 -- Internal projects completed by freelancer or team
+-- `freelancer_or_team` either of "freelancer" or "team"
 CREATE TABLE Completed_project
 (
   `project_idx`  INT    NOT NULL,
+  `freelancer_or_team`  VARCHAR(15)    NOT NULL,
   `freelancer_idx`   INT    NULL,
   `team_idx` INT NULL,
   FOREIGN KEY (project_idx)
@@ -161,11 +163,11 @@ CREATE TABLE Internal_project_language_requirement
 
 
 -- Current_project Table Create SQL
--- `single_or_team` either of "single", "team", or "both"
+-- `freelancer_or_team` either of "freelancer" or "team"
 CREATE TABLE Current_project
 (
   `project_idx`     INT    NOT NULL,
-  `single_or_team`  VARCHAR(15)    NOT NULL,
+  `freelancer_or_team`  VARCHAR(15)    NOT NULL,
   `freelancer_idx`  INT    NULL,
   `team_idx`        INT    NULL,
   FOREIGN KEY (freelancer_idx)

@@ -61,7 +61,7 @@
     - [x] [/api/freelancer/team/leave](#apifreelancerteamleave) `POST`
     - [x] [/api/freelancer/team/getForTeam](#apifreelancerteamgetforteam)`POST`
     - [x] [/api/freelancer/team/apply](#apifreelancerteamapply) `POST`
-    - [ ] [/api/freelancer/team/finish/submit](#apifreelancerteamfinishsubmit) `POST`
+    - [x] [/api/freelancer/team/finish/submit](#apifreelancerteamfinishsubmit) `POST`
     - [ ] [/api/freelancer/team/finish/rateClient](#apifreelancerteamfinishrateclient) `POST`
   - [submitting a request to finish a project (/api/freelancer/finish)](#apifreelancerfinish-(submitting-a-request-to-finish-a-project))
     - [ ] [/api/freelancer/finish/submit](#apifreelancerfinishsubmit) `POST`
@@ -1113,7 +1113,7 @@
 
   ```
   {
-      "freelancer_idx": freelancer idx,
+      "freelancer_idx": freelancer idx (must be team leader),
       "team_idx": team idx,
       "project_idx": project idx
   }
@@ -1586,7 +1586,7 @@
   ```
   {
       "success": true / false,
-      "completed": [
+      "pending": [
           {
           	"idx": project idx (1),
           	"name": project name,
@@ -1868,10 +1868,11 @@ CREATE TABLE Internal_project_language_requirement
 
 
 -- Current_project Table Create SQL
+-- `freelancer_or_team` either of "freelancer" or "team"
 CREATE TABLE Current_project
 (
   `project_idx`     INT    NOT NULL,
-  `single_or_team`  VARCHAR(15)    NOT NULL,
+  `freelancer_or_team`  VARCHAR(15)    NOT NULL,
   `freelancer_idx`  INT    NULL,
   `team_idx`        INT    NULL,
   FOREIGN KEY (freelancer_idx)
