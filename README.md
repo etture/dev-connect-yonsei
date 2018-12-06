@@ -70,10 +70,10 @@
 - #### <span style="color: green; font-weight: bold">client account (/api/client)</span>
 
   - [projects (/api/client/project)](#apiclientproject-(projects))
-    - [ ] [/api/client/project/register](#apiclientprojectregister) `POST`
-    - [ ] [/api/client/project/getCurrent](#apiclientprojectgetcurrent) `POST`
-    - [ ] [/api/client/project/getRegistered](#apiclientprojectgetregistered) `POST`
-    - [ ] [/api/client/project/getCompleted](#apiclientprojectgetcompleted) `POST`
+    - [x] [/api/client/project/register](#apiclientprojectregister) `POST`
+    - [x] [/api/client/project/getCurrent](#apiclientprojectgetcurrent) `POST`
+    - [x] [/api/client/project/getRegistered](#apiclientprojectgetregistered) `POST`
+    - [x] [/api/client/project/getCompleted](#apiclientprojectgetcompleted) `POST`
     - [ ] [/api/client/project/getApplicants](#apiclientprojectgetapplicants) `POST`
     - [ ] [/api/client/project/acceptApplicant](#apiclientprojectacceptapplicant) `POST`
   - [responding to a request to finish a project (/api/client/finish)](#apiclientfinish-(submitting-a-request-to-finish-a-project))
@@ -1453,15 +1453,14 @@
 
 - response body
 
-  - for each applicant, the `freelancer_or_team` attribute indicates whether it is an individual freelancer or a team
   - for a team, the object includes team information, leader information, and a list of team members in the team in nested objects
 
   ```
   {
       "success": true / false,
-      applicants: [
-          {
-              "freelancer_or_team": "freelancer",
+      applicants: {
+          freelancers: [
+              {
               "email": email,
               "name": name,
               "age": age,
@@ -1479,10 +1478,11 @@
               		"proficiency": proficiency level (integer)
                   },
                   ...
-              ]
-          },
-          {
-              "freelancer_or_team": "team",
+              },
+              ...
+          ],
+          teams: [
+              {
               "name": team name,
               "comment": comment on team, 
               "leader": {
@@ -1524,12 +1524,14 @@
               				"proficiency": proficiency level (integer)
                   		},
                   		...
-              			]
+              		]
                   },
                   ...
               ]
-          }
-      ]
+          	},
+          	...
+          ]
+      }
   }
   ```
 
