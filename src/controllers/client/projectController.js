@@ -86,7 +86,56 @@ exports.getCompleted = (req, res) => {
 exports.getApplicants = (req, res) => {
     const {client_idx, project_idx} = req.body;
 
+    // Check whether client owns the project
+    db.query('SELECT * FROM `Internal_project` WHERE client_idx = ? AND idx = ?', [client_idx, project_idx], (err, result) => {
+        if (err) return res.status(400).json({
+            success: false,
+            error_message: "client get applicants check project ownership failed; database error"
+        });
 
+        const project = JSON.parse(JSON.stringify(result));
+
+        // Ownership checked
+        if(project.length !== 0){
+            // Get all applications with the corresponding project idx
+            db.query('SELECT * FROM `Application` WHERE project_idx = ?', project_idx, (err, result) => {
+                if (err) return res.status(400).json({
+                    success: false,
+                    error_message: "client get applicants get applications failed; database error"
+                });
+
+                // Get applications and separate them into freelancer apps and team apps
+                const applications = JSON.parse(JSON.stringify(result));
+                const freelancer_apps = applications.filter(app => app.freelancer_or_team === "freelancer");
+                const team_apps = applications.filter(app => app.freelancer_or_team === "team");
+
+                // Make arrays with freelancer indices and team indices for DB querying
+                const freelancer_idxs = [];
+                const team_idxs = [];
+                freelancer_apps.forEach(app => freelancer_idxs.push(app.freelancer_idx));
+                team_apps.forEach(app => team_idxs.push(app.team_idx));
+
+                // Get teams with the team indices from applications first
+                db.query('SELECT * FROM `Team` WHERE `idx` IN (?)', team_idxs, (err, result) => {
+                    if (err) return res.status(400).json({
+                        success: false,
+                        error_message: "client get applicants get teams failed; database error"
+                    });
+
+                    const teams = JSON.parse(JSON.stringify(result));
+                    // Push leader indexes into freelancer_idxs array
+                    teams.forEach(team => freelancer_idxs.push(team.leader_idx));
+
+                    // TODO query Team_member table
+                });
+            });
+        } else {
+            res.status(400).json({
+                success: false,
+                error_message: "client get applicants check project ownership failed; client doesn't own this project"
+            });
+        }
+    });
 };
 
 exports.acceptApplicant = (req, res) => {

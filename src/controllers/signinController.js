@@ -9,7 +9,7 @@ exports.admin = (req, res) => {
             error_message: "admin signin failed"
         });
 
-        const admin = JSON.parse(JSON.stringify(result));
+        const admin = JSON.parse(JSON.stringify(result))[0];
         if(admin.length === 0) {
             res.status(400).json({
                 success: false,
@@ -33,7 +33,7 @@ exports.freelancer = (req, res) => {
             error_message: "freelancer signin failed"
         });
 
-        const freelancer = JSON.parse(JSON.stringify(result));
+        const freelancer = JSON.parse(JSON.stringify(result))[0];
         if(freelancer.length === 0){
             res.status(400).json({
                 success: false,
@@ -57,7 +57,7 @@ exports.client = (req, res) => {
             error_message: "client signin failed"
         });
 
-        const client = JSON.parse(JSON.stringify(result));
+        const client = JSON.parse(JSON.stringify(result))[0];
         if(client.length === 0){
             res.status(400).json({
                 success: false,
