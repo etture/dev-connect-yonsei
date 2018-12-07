@@ -1613,6 +1613,7 @@
       applicants: {
           freelancers: [
               {
+              "idx": idx,
               "email": email,
               "name": name,
               "age": age,
@@ -1630,11 +1631,13 @@
               		"proficiency": proficiency level (integer)
                   },
                   ...
+              ]
               },
               ...
           ],
           teams: [
               {
+              "idx": idx,
               "name": team name,
               "comment": comment on team, 
               "leader": {

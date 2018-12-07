@@ -2,7 +2,7 @@
   "name": "devconnect-yonsei",
   "version": "1.0.0",
   "engines": {
-    "node": "8.11.1",
+    "node": "10.14.1",
     "npm": "6.4.1"
   },
   "scripts": {
@@ -39,6 +39,7 @@
     "@types/express": "^4.16.0",
     "@types/mysql": "^2.15.5",
     "babel-cli": "^6.26.0",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
     "babel-preset-stage-0": "^6.24.1",
     "nodemon": "^1.18.5"
   },
