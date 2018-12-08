@@ -77,7 +77,7 @@
     - [x] [/api/client/project/getCurrent](#apiclientprojectgetcurrent) `POST`
     - [x] [/api/client/project/getRegistered](#apiclientprojectgetregistered) `POST`
     - [x] [/api/client/project/getCompleted](#apiclientprojectgetcompleted) `POST`
-    - [ ] [/api/client/project/getApplicants](#apiclientprojectgetapplicants) `POST`
+    - [x] [/api/client/project/getApplicants](#apiclientprojectgetapplicants) `POST`
     - [ ] [/api/client/project/acceptApplicant](#apiclientprojectacceptapplicant) `POST`
   - responding to a request to finish a project (/api/client/finish)
       - [ ] [/api/client/finish/getSubmissions](#apiclientfinishgetsubmissions) `POST`

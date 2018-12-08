@@ -65,8 +65,8 @@ exports.getExternal = (req, res) => {
 };
 
 exports.registerExternal = (req, res) => {
-    const {freelancer_idx, start_date, end_date, pay, attachment, comment} = req.body;
-    let newProject = {freelancer_idx, start_date, end_date, pay, attachment, comment};
+    const {freelancer_idx, name, start_date, end_date, pay, attachment, comment} = req.body;
+    let newProject = {freelancer_idx, name, start_date, end_date, pay, attachment, comment};
     Object.keys(newProject).forEach(key => newProject[key] === undefined && delete newProject[key]);
 
     db.query("INSERT INTO `External_project` SET ?", newProject, (err, result) => {
