@@ -188,7 +188,14 @@
       "age": age (integer),
   	"major": major,
   	"phone": phone number (string),
-  	"experience": # of years of experience (integer)
+  	"experience": # of years of experience (integer),
+  	"languages": [
+          {
+              "language_idx": language idx,
+              "proficiency": proficiency from 0 ~ 10
+          },
+          ... (more languages)
+  	]
   }
   ```
 
