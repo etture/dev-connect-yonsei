@@ -35,3 +35,64 @@ exports.modify = (req, res) => {
         });
     });
 };
+
+exports.modifyLanguages = (req, res) => {
+    const {freelancer_idx, languages} = req.body;
+
+    db.beginTransaction((err) => {
+        if(err) {
+            return db.rollback(() => {
+                res.status(400).json({
+                    success: false,
+                    error_message: "freelancer modify languages failed; database transaction error"
+                });
+            });
+        }
+
+        db.query('DELETE FROM `Programming_language_knowledge` WHERE freelancer_idx = ?', freelancer_idx, (err) => {
+            if(err) {
+                return db.rollback(() => {
+                    res.status(400).json({
+                        success: false,
+                        error_message: "freelancer modify languages delete failed; database error"
+                    });
+                });
+            }
+
+            if (languages === undefined || languages.length === 0) {
+                res.status(200).json({
+                    success: true
+                });
+            } else {
+                const languages_insert = [];
+                languages.forEach((language) => languages_insert.push([freelancer_idx, language.language_idx, language.proficiency]));
+
+                db.query('INSERT INTO `Programming_language_knowledge` (freelancer_idx, language_idx, proficiency) VALUES ?', [languages_insert], (err) => {
+                    if (err) {
+                        return db.rollback(() => {
+                            res.status(400).json({
+                                success: false,
+                                error_message: "freelancer modify languages insert failed; database error"
+                            });
+                        });
+                    }
+
+                    db.commit((err) => {
+                        if (err) {
+                            return db.rollback(() => {
+                                res.status(400).json({
+                                    success: false,
+                                    error_message: "freelancer modify languages commit transaction failed; database error"
+                                });
+                            });
+                        }
+
+                        res.status(200).json({
+                            success: true
+                        });
+                    });
+                });
+            }
+        });
+    })
+};

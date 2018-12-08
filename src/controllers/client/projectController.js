@@ -275,7 +275,7 @@ exports.acceptApplicant = (req, res) => {
                 error_message: "client accept freelancer applicant failed; database transaction error"
             });
 
-            db.query('UPDATE `Internal_project` SET status = "working" WHERE idx = ?', project_idx, (err) => {
+            db.query('UPDATE `Internal_project` SET status = "working" WHERE client_idx = ? AND idx = ?', [client_idx, project_idx], (err) => {
                 if (err) {
                     return db.rollback(() => {
                         res.status(400).json({
@@ -332,7 +332,7 @@ exports.acceptApplicant = (req, res) => {
                 error_message: "client accept team applicant failed; database transaction error"
             });
 
-            db.query('UPDATE `Internal_project` SET status = "working" WHERE idx = ?', project_idx, (err) => {
+            db.query('UPDATE `Internal_project` SET status = "working" client_idx = ? AND idx = ?', [client_idx, project_idx], (err) => {
                 if (err) {
                     return db.rollback(() => {
                         res.status(400).json({

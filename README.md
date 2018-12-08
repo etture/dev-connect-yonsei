@@ -31,6 +31,7 @@
     - [x] [/api/admin/account/getFreelancers](#apiadminaccountgetfreelancers) `POST`
     - [x] [/api/admin/account/getClients](#apiadminaccountgetclients) `POST`
     - [x] [/api/admin/account/getAllUsers](#apiadminaccountgetallusers) `POST`
+    - [x] [/api/admin/account/getTeams](#apiadminaccountgetteams) `POST`
     - [x] [/api/admin/account/getFreelancerByIdx](#apiadminaccountgetfreelancerbyidx) `POST`
     - [x] [/api/admin/account/getClientByIdx](#apiadminaccountgetclientbyidx) `POST`
   - deleting accounts (/api/admin/account/delete)
@@ -49,6 +50,7 @@
   - account information (/api/freelancer/account)
     - [x] [/api/freelancer/account/getInfo](#apifreelanceraccountgetinfo) `POST`
     - [x] [/api/freelancer/account/modify](#apifreelanceraccountmodify) `PUT`
+    - [x] [/api/freelancer/account/modifyLanguages](#apifreelanceraccountmodifylanguages) `POST`
   - project portfolio (/api/freelancer/portfolio)
     - [x] [/api/freelancer/portfolio/getAll](#apifreelancerportfoliogetall) `POST`
     - [x] [/api/freelancer/portfolio/getInternal](#apifreelancerportfoliogetInternal) `POST`
@@ -383,6 +385,80 @@
           },
           ...
       ]
+  }
+  ```
+
+##### /api/admin/account/getTeams
+
+- get list of teams
+
+- `POST`
+
+- request body
+
+  ```
+  {
+      "admin_key": admin key
+  }
+  ```
+
+- response body
+
+  ```
+  {
+      "success": true / false,
+      "error_message": error message if failed,
+      "teams": [
+              {
+              "idx": idx,
+              "name": team name,
+              "comment": comment on team, 
+              "leader": {
+              	"email": email,
+              	"name": name,
+              	"age": age,
+              	"major": major,
+              	"phone": phone number (string), 
+              	"experience": # of years of experience,
+              	"rating": float or null,
+              	"language_knowledge": [
+                  	{
+                      	"language": name of programming language,
+              			"proficiency": proficiency level (integer)
+                  	},
+                  	{
+                      	"language": name of programming language,
+              			"proficiency": proficiency level (integer)
+                  	},
+                  	...
+              		]
+              	},
+              "team_members": [
+                  {
+                      "email": email,
+              		"name": name,
+              		"age": age,
+              		"major": major,
+              		"phone": phone number (string), 
+              		"experience": # of years of experience,
+              		"rating": float or null,
+              		"language_knowledge": [
+                  		{
+                      		"language": name of programming language,
+              				"proficiency": proficiency level (integer)
+                  		},
+                  		{
+                      		"language": name of programming language,
+              				"proficiency": proficiency level (integer)
+                  		},
+                  		...
+              		]
+                  },
+                  ...
+              ]
+          	},
+          	...
+          ]
   }
   ```
 
@@ -731,6 +807,44 @@
   	"major": major (OPTIONAL),
   	"phone": phone number (string) (OPTIONAL),
   	"experience": # of years of experience (integer) (OPTIONAL)
+  }
+  ```
+
+- response body
+
+  ```
+  {
+      "success": true / false,
+      "error_message": error message if failed
+  }
+  ```
+
+#### /api/freelancer/account/modifyLanguages
+
+- modify programming language knowledge
+
+- `POST`
+
+- request body
+
+  - must include all languages known by freelancer and their proficiency
+    - e.g. if adding a new languages, must include all current languages + new language
+    - e.g. if modifying existing languages, still include all languages, with the modified parameters
+
+  ```
+  {
+      "freelancer_idx": freelancer idx,
+      "languages": [
+          {
+              "language_idx": language idx,
+              "proficiency": proficiency
+          },
+          {
+              "language_idx": language idx,
+              "proficiency": proficiency
+          },
+          ...
+      ]
   }
   ```
 
