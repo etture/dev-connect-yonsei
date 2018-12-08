@@ -3,7 +3,7 @@ const db = require('../../database/db');
 exports.getInfo = (req, res) => {
     const {freelancer_idx} = req.body;
 
-    db.query('SELECT * FROM freelancer WHERE idx = ?', freelancer_idx, (err, result) => {
+    db.query('SELECT idx, email, name, age, major, phone, experience, rating FROM freelancer WHERE idx = ?', freelancer_idx, (err, result) => {
         if (err) return res.status(400).json({
             success: false,
             error_message: "freelancer get info failed; database error"

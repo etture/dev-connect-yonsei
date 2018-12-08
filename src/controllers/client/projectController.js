@@ -96,7 +96,7 @@ exports.getApplicants = (req, res) => {
         const project = JSON.parse(JSON.stringify(result));
 
         // Ownership checked
-        if(project.length !== 0){
+        if (project.length !== 0) {
             // Get all applications with the corresponding project idx
             db.query('SELECT * FROM `Application` WHERE project_idx = ?', project_idx, (err, result) => {
                 if (err) return res.status(400).json({
@@ -107,7 +107,7 @@ exports.getApplicants = (req, res) => {
                 // Get applications and separate them into freelancer apps and team apps
                 const applications = JSON.parse(JSON.stringify(result));
 
-                if(applications.length === 0){
+                if (applications.length === 0) {
                     return res.status(400).json({
                         success: false,
                         error_message: "client get applicants failed; no applications for this project"
@@ -205,15 +205,15 @@ exports.getApplicants = (req, res) => {
                                     const this_team_members = team_member_list.filter(member => member.team_idx === team.idx);
                                     const team_members = [];
                                     console.log('team_member_only:', team_member_only);
-                                    if(this_team_members.length > 0) {
+                                    if (this_team_members.length > 0) {
                                         this_team_members.forEach((member) => {
                                             const team_member_candidate = team_member_only.filter(candidate => candidate.idx === member.freelancer_idx);
 
-                                            if(team_member_candidate.length === 0) return;
+                                            if (team_member_candidate.length === 0) return;
 
                                             const team_member = team_member_candidate[0];
 
-                                            if(team_member.idx === team.leader_idx) return;
+                                            if (team_member.idx === team.leader_idx) return;
 
                                             let language_knowledge = [];
                                             const knowledge_list = knowledges.filter(knowledge => knowledge.freelancer_idx === team_member_candidate.idx);
@@ -264,5 +264,126 @@ exports.getApplicants = (req, res) => {
 };
 
 exports.acceptApplicant = (req, res) => {
+    const {client_idx, project_idx, freelancer_or_team, applicant_idx} = req.body;
 
+    if (freelancer_or_team === "freelancer") {
+        const freelancer_idx = applicant_idx;
+
+        db.beginTransaction((err) => {
+            if (err) return res.status(400).json({
+                success: false,
+                error_message: "client accept freelancer applicant failed; database transaction error"
+            });
+
+            db.query('UPDATE `Internal_project` SET status = "working" WHERE idx = ?', project_idx, (err) => {
+                if (err) {
+                    return db.rollback(() => {
+                        res.status(400).json({
+                            success: false,
+                            error_message: "client accept freelancer applicant set project status to working failed; database error"
+                        });
+                    });
+                }
+
+                db.query('INSERT INTO `Current_project` SET ?', {project_idx, freelancer_or_team, freelancer_idx}, (err) => {
+                    if (err) {
+                        return db.rollback(() => {
+                            res.status(400).json({
+                                success: false,
+                                error_message: "client accept freelancer applicant insert into current_project table failed; database error"
+                            });
+                        });
+                    }
+
+                    db.query('DELETE FROM `Application` WHERE project_idx = ? AND freelancer_idx = ?', [project_idx, freelancer_idx], (err) => {
+                        if (err) {
+                            return db.rollback(() => {
+                                res.status(400).json({
+                                    success: false,
+                                    error_message: "client accept freelancer applicant delete from application table failed; database error"
+                                });
+                            });
+                        }
+
+                        db.commit((err) => {
+                            if (err) {
+                                return db.rollback(() => {
+                                    res.status(400).json({
+                                        success: false,
+                                        error_message: "client accept freelancer applicant commit transaction failed; database error"
+                                    });
+                                });
+                            }
+
+                            res.status(200).json({
+                                 success: true
+                            });
+                        });
+                    });
+                });
+            });
+        });
+    } else if (freelancer_or_team === "team") {
+        const team_idx = applicant_idx;
+
+        db.beginTransaction((err) => {
+            if (err) return res.status(400).json({
+                success: false,
+                error_message: "client accept team applicant failed; database transaction error"
+            });
+
+            db.query('UPDATE `Internal_project` SET status = "working" WHERE idx = ?', project_idx, (err) => {
+                if (err) {
+                    return db.rollback(() => {
+                        res.status(400).json({
+                            success: false,
+                            error_message: "client accept team applicant set project status to working failed; database error"
+                        });
+                    });
+                }
+
+                db.query('INSERT INTO `Current_project` SET ?', {project_idx, freelancer_or_team, team_idx}, (err) => {
+                    if (err) {
+                        return db.rollback(() => {
+                            res.status(400).json({
+                                success: false,
+                                error_message: "client accept team applicant insert into current_project table failed; database error"
+                            });
+                        });
+                    }
+
+                    db.query('DELETE FROM `Application` WHERE project_idx = ? AND team_idx = ?', [project_idx, team_idx], (err) => {
+                        if (err) {
+                            return db.rollback(() => {
+                                res.status(400).json({
+                                    success: false,
+                                    error_message: "client accept team applicant delete from application table failed; database error"
+                                });
+                            });
+                        }
+
+                        db.commit((err) => {
+                            if (err) {
+                                return db.rollback(() => {
+                                    res.status(400).json({
+                                        success: false,
+                                        error_message: "client accept team applicant commit transaction failed; database error"
+                                    });
+                                });
+                            }
+
+                            res.status(200).json({
+                                success: true
+                            });
+                        });
+                    });
+                });
+            });
+        });
+    } else {
+        res.status(400).json({
+            success: false,
+            error_message: "client accept applicant failed; freelancer_or_team not specified correctly"
+        });
+    }
 };

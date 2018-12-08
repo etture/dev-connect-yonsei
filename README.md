@@ -27,10 +27,12 @@
 
 - #### <span style="color: green; font-weight: bold">admin account (/api/admin)</span>
 
-  - seeing list of accounts
-    - [x] [/api/admin/getFreelancers](#apiadmingetfreelancers) `POST`
-    - [x] [/api/admin/getClients](#apiadmingetclients) `POST`
-    - [x] [/api/admin/getAllUsers](#apiadmingetallusers) `POST`
+  - seeing list of accounts (/api/admin/account)
+    - [x] [/api/admin/account/getFreelancers](#apiadminaccountgetfreelancers) `POST`
+    - [x] [/api/admin/account/getClients](#apiadminaccountgetclients) `POST`
+    - [x] [/api/admin/account/getAllUsers](#apiadminaccountgetallusers) `POST`
+    - [x] [/api/admin/account/getFreelancerByIdx](#apiadminaccountgetfreelancerbyidx) `POST`
+    - [x] [/api/admin/account/getClientByIdx](#apiadminaccountgetclientbyidx) `POST`
   - deleting accounts (/api/admin/account/delete)
     - [x] [/api/admin/account/delete/freelancer](#apiadminaccountdeletefreelancer) `DELETE`
     - [x] [/api/admin/account/delete/client](#apiadminaccountdeleteclient) `DELETE`
@@ -74,8 +76,8 @@
 - #### <span style="color: green; font-weight: bold">client account (/api/client)</span>
 
   - account (/api/client/account)
-    - [ ] [/api/client/account/getInfo](#apiclientaccountgetinfo) `POST`
-    - [ ] [/api/client/account/modify](#apiclientaccountmodify) `PUT`
+    - [x] [/api/client/account/getInfo](#apiclientaccountgetinfo) `POST`
+    - [x] [/api/client/account/modify](#apiclientaccountmodify) `PUT`
   - projects (/api/client/project)
     - [x] [/api/client/project/register](#apiclientprojectregister) `POST`
     - [x] [/api/client/project/getCurrent](#apiclientprojectgetcurrent) `POST`
@@ -229,9 +231,9 @@
 
 ## /api/admin (admin account)
 
-### seeing list of accounts
+### seeing list of accounts (/api/admin/account)
 
-##### /api/admin/getFreelancers
+##### /api/admin/account/getFreelancers
 
 - get list of all freelancers
 

@@ -9,8 +9,8 @@ exports.admin = (req, res) => {
             error_message: "admin signin failed"
         });
 
-        const admin = JSON.parse(JSON.stringify(result));
-        if(admin.length === 0) {
+        const admin = JSON.parse(JSON.stringify(result))[0];
+        if(admin === undefined) {
             res.status(400).json({
                 success: false,
                 error_message: "admin signin failed"
@@ -18,7 +18,7 @@ exports.admin = (req, res) => {
         } else {
             res.status(200).json({
                 success: true,
-                admin_idx: admin[0].idx
+                admin_idx: admin.idx
             });
         }
     })
@@ -33,8 +33,8 @@ exports.freelancer = (req, res) => {
             error_message: "freelancer signin failed"
         });
 
-        const freelancer = JSON.parse(JSON.stringify(result));
-        if(freelancer.length === 0){
+        const freelancer = JSON.parse(JSON.stringify(result))[0];
+        if(freelancer === undefined){
             res.status(400).json({
                 success: false,
                 error_message: "freelancer signin failed"
@@ -42,7 +42,7 @@ exports.freelancer = (req, res) => {
         } else {
             res.status(200).json({
                 success: true,
-                freelancer_idx: freelancer[0].idx
+                freelancer_idx: freelancer.idx
             });
         }
     });
@@ -57,8 +57,8 @@ exports.client = (req, res) => {
             error_message: "client signin failed"
         });
 
-        const client = JSON.parse(JSON.stringify(result));
-        if(client.length === 0){
+        const client = JSON.parse(JSON.stringify(result))[0];
+        if(client === undefined){
             res.status(400).json({
                 success: false,
                 error_message: "client signin failed"
@@ -66,7 +66,7 @@ exports.client = (req, res) => {
         } else {
             res.status(200).json({
                 success: true,
-                client_idx: client[0].idx
+                client_idx: client.idx
             });
         }
     });
