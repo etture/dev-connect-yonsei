@@ -84,7 +84,7 @@
     - [x] [/api/client/project/getRegistered](#apiclientprojectgetregistered) `POST`
     - [x] [/api/client/project/getCompleted](#apiclientprojectgetcompleted) `POST`
     - [x] [/api/client/project/getApplicants](#apiclientprojectgetapplicants) `POST`
-    - [ ] [/api/client/project/acceptApplicant](#apiclientprojectacceptapplicant) `POST`
+    - [x] [/api/client/project/acceptApplicant](#apiclientprojectacceptapplicant) `POST`
   - responding to a request to finish a project (/api/client/finish)
       - [ ] [/api/client/finish/getSubmissions](#apiclientfinishgetsubmissions) `POST`
       - [ ] [/api/client/finish/accept](#apiclientfinishaccept) `POST`
@@ -379,8 +379,72 @@
   }
   ```
 
+##### /api/admin/account/getFreelancerByIdx
 
-### /api/admin/account
+- get info for a single freelancer by idx
+
+- `POST`
+
+- request body
+
+  ```
+  {
+      "admin_key": admin key,
+      "freelancer_idx": freelancer idx
+  }
+  ```
+
+- response body
+
+  ```
+  {
+      "success": true / false,
+      "error_message": error message if failed,
+      "freelancer": {
+          "idx": freelancer idx,
+          "email": email address,
+          "name": name, 
+          "age": age,
+          "major": major, 
+          "phone": phone number, 
+          "experience": years of experience, 
+          "rating": rating
+      }
+  }
+  ```
+
+##### /api/admin/account/getClientByIdx
+
+- get info for a single client by idx
+
+- `POST`
+
+- request body
+
+  ```
+  {
+      "admin_key": admin key, 
+      "client_idx": client idx
+  }
+  ```
+
+- response body
+
+  ```
+  {
+      "success": true / false,
+      "error_message": error message if failed,
+      "client": {
+          "idx": idx,
+          "email": email address,
+          "name": name, 
+          "phone": phone number, 
+          "rating": rating
+      }
+  }
+  ```
+
+### /api/admin/account/delete
 
 ##### /api/admin/account/delete/freelancer
 
