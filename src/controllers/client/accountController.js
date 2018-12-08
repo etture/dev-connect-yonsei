@@ -1,12 +1,12 @@
 const db = require('../../database/db');
 
 exports.getInfo = (req, res) => {
-    const {freelancer_idx} = req.body;
+    const {client_idx} = req.body;
 
-    db.query('SELECT * FROM freelancer WHERE idx = ?', freelancer_idx, (err, result) => {
+    db.query('SELECT * FROM client WHERE idx = ?', client_idx, (err, result) => {
         if (err) return res.status(400).json({
             success: false,
-            error_message: "freelancer get info failed; database error"
+            error_message: "client get info failed; database error"
         });
 
         const info = JSON.parse(JSON.stringify(result));
@@ -19,15 +19,15 @@ exports.getInfo = (req, res) => {
 };
 
 exports.modify = (req, res) => {
-    const {freelancer_idx} = req.body;
-    const {password, name, age, major, phone, experience} = req.body;
-    let modified = {password, name, age, major, phone, experience};
+    const {freelancer_idx: client_idx} = req.body;
+    const {password, name, phone} = req.body;
+    let modified = {password, name, phone};
     Object.keys(modified).forEach(key => modified[key] === undefined && delete modified[key]);
 
-    db.query("UPDATE `Freelancer` SET ? WHERE idx = ?", [modified, freelancer_idx], (err, result) => {
+    db.query("UPDATE `Client` SET ? WHERE idx = ?", [modified, client_idx], (err, result) => {
         if (err) return res.status(400).json({
             success: false,
-            error_message: "freelancer modify failed; database error"
+            error_message: "client modify failed; database error"
         });
 
         res.status(200).json({

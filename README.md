@@ -45,6 +45,7 @@
 - #### <span style="color: green; font-weight: bold">freelancer account (/api/freelancer)</span>
 
   - account information (/api/freelancer/account)
+    - [x] [/api/freelancer/account/getInfo](#apifreelanceraccountgetinfo) `POST`
     - [x] [/api/freelancer/account/modify](#apifreelanceraccountmodify) `PUT`
   - project portfolio (/api/freelancer/portfolio)
     - [x] [/api/freelancer/portfolio/getAll](#apifreelancerportfoliogetall) `POST`
@@ -72,6 +73,9 @@
 
 - #### <span style="color: green; font-weight: bold">client account (/api/client)</span>
 
+  - account (/api/client/account)
+    - [ ] [/api/client/account/getInfo](#apiclientaccountgetinfo) `POST`
+    - [ ] [/api/client/account/modify](#apiclientaccountmodify) `PUT`
   - projects (/api/client/project)
     - [x] [/api/client/project/register](#apiclientprojectregister) `POST`
     - [x] [/api/client/project/getCurrent](#apiclientprojectgetcurrent) `POST`
@@ -601,6 +605,39 @@
 ## /api/freelancer (freelancer account)
 
 ### /api/freelancer/account (account information)
+
+#### /api/freelancer/account/getInfo
+
+- get personal information (except password)
+
+- `POST`
+
+- request body
+
+  ```
+  {
+      "freelancer_idx": freelancer idx
+  }
+  ```
+
+- response body
+
+  ```
+  {
+      "success": true / false,
+      "error_message": error message if failed,
+      "info": {
+          "idx": freelancer idx,
+          "email": email address,
+          "name": name, 
+          "age": age,
+          "major": major, 
+          "phone": phone number, 
+          "experience": years of experience, 
+          "rating": rating
+      }
+  }
+  ```
 
 #### /api/freelancer/account/modify
 
@@ -1399,6 +1436,66 @@
   ```
 
 ## /api/client (client account)
+
+### /api/client/account
+
+#### /api/client/account/getInfo
+
+- get personal information (except password)
+
+- `POST`
+
+- request body
+
+  ```
+  {
+      "client_idx": client idx
+  }
+  ```
+
+- response body
+
+  ```
+  {
+      "success": true / false,
+      "error_message": error message if failed,
+      "info": {
+          "idx": idx,
+          "email": email address,
+          "name": name, 
+          "phone": phone number, 
+          "rating": rating
+      }
+  }
+  ```
+
+#### /api/client/account/modify
+
+- modify personal information (except email address)
+
+- `PUT`
+
+- request body
+
+  - Must include client idx, then optionally include items to be modified
+
+  ```
+  {
+      "client_idx": client idx (REQUIRED),
+      "password": password (OPTIONAL),
+      "name": name (OPTIONAL),
+      "phone": phone number (string) (OPTIONAL)
+  }
+  ```
+
+- response body
+
+  ```
+  {
+      "success": true / false,
+      "error_message": error message if failed
+  }
+  ```
 
 ### /api/client/project (projects)
 
