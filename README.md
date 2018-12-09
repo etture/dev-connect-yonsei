@@ -1704,7 +1704,19 @@
       "max_part": # of maximum participants,
       "experience": # years experience required,
       "pay": pay in Korean Won,
-      "req_doc": blob of request document if exists
+      "req_doc": blob of request document if exists,
+      "languages": // list of language requirements
+      	[
+              {
+                  "language_idx": language idx,
+                  "proficiency": proficiency
+              },
+              {
+                  "language_idx": language idx,
+                  "proficiency": proficiency
+              },
+              ...
+      	]
   }
   ```
 

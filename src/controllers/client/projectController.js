@@ -1,7 +1,7 @@
 const db = require('../../database/db');
 
 exports.register = (req, res) => {
-    const {client_idx, name, start_date, end_date, min_part, max_part, experience, pay, req_doc} = req.body;
+    const {client_idx, name, start_date, end_date, min_part, max_part, experience, pay, req_doc, languages} = req.body;
 
     const toRegister = {
         client_idx,
@@ -17,14 +17,61 @@ exports.register = (req, res) => {
     };
     Object.keys(toRegister).forEach(key => toRegister[key] === undefined && delete toRegister[key]);
 
-    db.query('INSERT INTO `Internal_project` SET ?', toRegister, (err) => {
-        if (err) return res.status(400).json({
-            success: false,
-            error_message: "client register project failed; database error"
-        });
+    db.beginTransaction((err) => {
+        if (err) {
+            return db.rollback(() => {
+                res.status(400).json({
+                    success: false,
+                    error_message: "client register project failed; database transaction error"
+                });
+            });
+        }
 
-        res.status(200).json({
-            success: true
+        db.query('INSERT INTO `Internal_project` SET ?', toRegister, (err, result) => {
+            if (err) {
+                return db.rollback(() => {
+                    res.status(400).json({
+                        success: false,
+                        error_message: "client register project failed; database error"
+                    });
+                });
+            }
+
+            if (languages === undefined || languages.length === 0) {
+                res.status(200).json({
+                    success: true
+                });
+            } else {
+                const project_idx = result.insertId;
+                const languages_insert = [];
+                languages.forEach((language) => languages_insert.push([project_idx, language.language_idx, language.proficiency]));
+
+                db.query('INSERT INTO `Internal_project_language_requirement` (project_idx, language_idx, proficiency) VALUES ?', [languages_insert], (err) => {
+                    if (err) {
+                        return db.rollback(() => {
+                            res.status(400).json({
+                                success: false,
+                                error_message: "client register project insert language requirements failed; database error"
+                            });
+                        });
+                    }
+
+                    db.commit((err) => {
+                        if (err) {
+                            return db.rollback(() => {
+                                res.status(400).json({
+                                    success: false,
+                                    error_message: "client register project commit transaction failed; database error"
+                                });
+                            });
+                        }
+
+                        res.status(200).json({
+                            success: true
+                        });
+                    });
+                });
+            }
         });
     });
 };
@@ -285,7 +332,11 @@ exports.acceptApplicant = (req, res) => {
                     });
                 }
 
-                db.query('INSERT INTO `Current_project` SET ?', {project_idx, freelancer_or_team, freelancer_idx}, (err) => {
+                db.query('INSERT INTO `Current_project` SET ?', {
+                    project_idx,
+                    freelancer_or_team,
+                    freelancer_idx
+                }, (err) => {
                     if (err) {
                         return db.rollback(() => {
                             res.status(400).json({
@@ -316,7 +367,7 @@ exports.acceptApplicant = (req, res) => {
                             }
 
                             res.status(200).json({
-                                 success: true
+                                success: true
                             });
                         });
                     });
