@@ -10,7 +10,8 @@ CREATE TABLE Freelancer
   `major`       VARCHAR(255)    NOT NULL    COMMENT 'Major',
   `phone`       VARCHAR(13)     NOT NULL    COMMENT 'Phone',
   `experience`  INT             NOT NULL    COMMENT 'Years of experience',
-  `rating`      DOUBLE          NULL        COMMENT 'Rating',
+  `rating`      DOUBLE          NOT NULL DEFAULT 0.0 COMMENT 'Rating',
+  `rating_cnt`  INT             NULL   DEFAULT 0 COMMENT 'Rating count',
   PRIMARY KEY (idx)
 );
 
@@ -23,7 +24,8 @@ CREATE TABLE Client
   `password`  VARCHAR(255)    NOT NULL    COMMENT 'Password',
   `name`      VARCHAR(100)    NOT NULL    COMMENT 'Name',
   `phone`     VARCHAR(13)     NOT NULL    COMMENT 'Phone',
-  `rating`    DOUBLE          NULL        COMMENT 'Rating',
+  `rating`    DOUBLE          NOT NULL DEFAULT 0.0 COMMENT 'Rating',
+  `rating_cnt` INT            NULL    DEFAULT 0 COMMENT 'Rating count',
   PRIMARY KEY (idx)
 );
 
@@ -191,6 +193,4 @@ CREATE TABLE Application (
   FOREIGN KEY (team_idx)
   REFERENCES Team (idx)  ON DELETE CASCADE ON UPDATE CASCADE,
   UNIQUE (project_idx, freelancer_idx, team_idx)
-)
-
-SELECT * FROM Internal_project;
+);

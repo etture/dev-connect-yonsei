@@ -88,10 +88,10 @@
     - [x] [/api/client/project/getApplicants](#apiclientprojectgetapplicants) `POST`
     - [x] [/api/client/project/acceptApplicant](#apiclientprojectacceptapplicant) `POST`
   - responding to a request to finish a project (/api/client/finish)
-      - [ ] [/api/client/finish/getSubmissions](#apiclientfinishgetsubmissions) `POST`
-      - [ ] [/api/client/finish/accept](#apiclientfinishaccept) `POST`
-      - [ ] [/api/client/finish/reject](#apiclientfinishreject) `POST`
-      - [ ] [/api/client/finish/rate](#apiclientfinishrate) `POST`
+      - [x] [/api/client/finish/getSubmissions](#apiclientfinishgetsubmissions) `POST`
+      - [x] [/api/client/finish/accept](#apiclientfinishaccept) `POST`
+      - [x] [/api/client/finish/reject](#apiclientfinishreject) `POST`
+      - [x] [/api/client/finish/rate](#apiclientfinishrate) `POST`
 
 
 
@@ -2126,6 +2126,9 @@
 #### /api/client/finish/rate
 
 - IF client has accepted the project-finish request, rate the freelancer / team
+
+- Among completed projects, see which projects have not been rated
+
 - `POST`
 
 - request body
@@ -2170,7 +2173,8 @@ CREATE TABLE Freelancer
   `major`       VARCHAR(255)    NOT NULL    COMMENT 'Major',
   `phone`       VARCHAR(13)     NOT NULL    COMMENT 'Phone',
   `experience`  INT             NOT NULL    COMMENT 'Years of experience',
-  `rating`      DOUBLE          NULL        COMMENT 'Rating',
+  `rating`      DOUBLE          NOT NULL DEFAULT 0.0 COMMENT 'Rating',
+  `rating_cnt`  INT             NULL   DEFAULT 0 COMMENT 'Rating count',
   PRIMARY KEY (idx)
 );
 
@@ -2183,7 +2187,8 @@ CREATE TABLE Client
   `password`  VARCHAR(255)    NOT NULL    COMMENT 'Password',
   `name`      VARCHAR(100)    NOT NULL    COMMENT 'Name',
   `phone`     VARCHAR(13)     NOT NULL    COMMENT 'Phone',
-  `rating`    DOUBLE          NULL        COMMENT 'Rating',
+  `rating`    DOUBLE          NOT NULL DEFAULT 0.0 COMMENT 'Rating',
+  `rating_cnt` INT            NULL    DEFAULT 0 COMMENT 'Rating count',
   PRIMARY KEY (idx)
 );
 
@@ -2279,6 +2284,7 @@ CREATE TABLE Completed_project
 
 
 -- Team_member Table Create SQL
+-- The team leader cannot leave unless the leader is changed first
 CREATE TABLE Team_member
 (
   `team_idx`        INT    NOT NULL,
@@ -2307,7 +2313,6 @@ CREATE TABLE Programming_language_knowledge
 
 
 -- Internal_project_language_requirement Table Create SQL
--- `single_or_team` either of "single", "team", or "both"
 CREATE TABLE Internal_project_language_requirement
 (
   `project_idx`   INT    NOT NULL,
@@ -2351,5 +2356,5 @@ CREATE TABLE Application (
   FOREIGN KEY (team_idx)
   REFERENCES Team (idx)  ON DELETE CASCADE ON UPDATE CASCADE,
   UNIQUE (project_idx, freelancer_idx, team_idx)
-)
+);
 ```
