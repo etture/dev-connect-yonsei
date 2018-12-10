@@ -611,7 +611,7 @@
               "max_part": # of maximum participants,
               "experience": # years experience required,
               "pay": pay in Korean Won,
-              "req_doc": blob of request document if exists
+              "req_doc": URL of request document if exists
           },
   		{
               "idx": project idx (2),
@@ -623,7 +623,7 @@
               "max_part": # of maximum participants,
               "experience": # years experience required,
               "pay": pay in Korean Won,
-              "req_doc": blob of request document if exists
+              "req_doc": URL of request document if exists
           },
   		...
       ]
@@ -652,7 +652,7 @@
       "max_part": # of maximum participants (OPTIONAL),
       "experience": # years experience required (OPTIONAL),
       "pay": pay in Korean Won (OPTIONAL),
-      "req_doc": blob of req document if exists (OPTIONAL)
+      "req_doc": URL of req document if exists (OPTIONAL)
   }
   ```
 
@@ -897,7 +897,7 @@
               "max_part": # of maximum participants,
               "experience": # years experience required,
               "pay": pay in Korean Won,
-              "req_doc": blob of req document if exists
+              "req_doc": URL of req document if exists
           },
           {
               "idx": internal project idx,
@@ -909,7 +909,7 @@
               "max_part": # of maximum participants,
               "experience": # years experience required,
               "pay": pay in Korean Won,
-              "req_doc": blob of req document if exists
+              "req_doc": URL of req document if exists
           },
           ...
       ],
@@ -920,7 +920,7 @@
               "start_date": start date,
               "end_date": end date,
               "pay": pay in Korean Won,
-              "attachment": blob of attached document if exists, 
+              "attachment": URL of attached document if exists, 
               "comment": comment on external project
           },
           {
@@ -929,7 +929,7 @@
               "start_date": start date,
               "end_date": end date,
               "pay": pay in Korean Won,
-              "attachment": blob of attached document if exists, 
+              "attachment": URL of attached document if exists, 
               "comment": comment on external project
           },
           ...  
@@ -973,7 +973,7 @@
               "max_part": # of maximum participants,
               "experience": # years experience required,
               "pay": pay in Korean Won,
-              "req_doc": blob of req document if exists
+              "req_doc": URL of req document if exists
           },
           {
               "idx": internal project idx (2),
@@ -985,7 +985,7 @@
               "max_part": # of maximum participants,
               "experience": # years experience required,
               "pay": pay in Korean Won,
-              "req_doc": blob of req document if exists
+              "req_doc": URL of req document if exists
           },
           ...
       ]
@@ -1024,7 +1024,7 @@
               "start_date": start date,
               "end_date": end date,
               "pay": pay in Korean Won,
-              "attachment": blob of attached document if exists, 
+              "attachment": URL of attached document if exists, 
               "comment": comment on external project
           },
           {
@@ -1033,7 +1033,7 @@
               "start_date": start date,
               "end_date": end date,
               "pay": pay in Korean Won,
-              "attachment": blob of attached document if exists, 
+              "attachment": URL of attached document if exists, 
               "comment": comment on external project
           },
           ...
@@ -1056,7 +1056,7 @@
       "start_date": start date (YYYY-MM-DD) (REQUIRED),
       "end_date": end date (YYYY-MM-DD) (REQUIRED),
       "pay": pay in Korean Won (integer) (REQUIRED),
-      "attachment": blob of attachment if exists (OPTIONAL),
+      "attachment": URL of attachment if exists (OPTIONAL),
       "comment": comment on external project (OPTIONAL)
   }
   ```
@@ -1100,7 +1100,7 @@
               "max_part": # of maximum participants,
               "experience": # years experience required,
               "pay": pay in Korean Won,
-              "req_doc": blob of request document if exists
+              "req_doc": URL of request document if exists
           },
   		{
               "idx": project idx (2),
@@ -1112,7 +1112,7 @@
               "max_part": # of maximum participants,
               "experience": # years experience required,
               "pay": pay in Korean Won,
-              "req_doc": blob of request document if exists
+              "req_doc": URL of request document if exists
           },
   		...
       ]
@@ -1152,7 +1152,7 @@
               "max_part": # of maximum participants,
               "experience": # years experience required,
               "pay": pay in Korean Won,
-              "req_doc": blob of request document if exists
+              "req_doc": URL of request document if exists
           },
   		{
               "idx": project idx (2),
@@ -1164,7 +1164,7 @@
               "max_part": # of maximum participants,
               "experience": # years experience required,
               "pay": pay in Korean Won,
-              "req_doc": blob of request document if exists
+              "req_doc": URL of request document if exists
           },
   		...
       ]
@@ -1200,7 +1200,7 @@
       	"max_part": # of maximum participants,
       	"experience": # years experience required,
       	"pay": pay in Korean Won,
-      	"req_doc": blob of request document if exists
+      	"req_doc": URL of request document if exists
       },
       "language_req": [
           {
@@ -1277,7 +1277,7 @@
               "max_part": # of maximum participants,
               "experience": # years experience required,
               "pay": pay in Korean Won,
-              "req_doc": blob of request document if exists
+              "req_doc": URL of request document if exists
           },
   		{
               "idx": project idx (2),
@@ -1289,7 +1289,7 @@
               "max_part": # of maximum participants,
               "experience": # years experience required,
               "pay": pay in Korean Won,
-              "req_doc": blob of request document if exists
+              "req_doc": URL of request document if exists
           },
   		...
       ]
@@ -1327,7 +1327,7 @@
               "max_part": # of maximum participants,
               "experience": # years experience required,
               "pay": pay in Korean Won,
-              "req_doc": blob of request document if exists
+              "req_doc": URL of request document if exists
           },
   		{
               "idx": project idx (2),
@@ -1339,7 +1339,7 @@
               "max_part": # of maximum participants,
               "experience": # years experience required,
               "pay": pay in Korean Won,
-              "req_doc": blob of request document if exists
+              "req_doc": URL of request document if exists
           },
   		...
       ]
@@ -1455,7 +1455,7 @@
               "max_part": # of maximum participants,
               "experience": # years experience required,
               "pay": pay in Korean Won,
-              "req_doc": blob of request document if exists
+              "req_doc": URL of request document if exists
           },
   		{
               "idx": project idx (2),
@@ -1467,7 +1467,7 @@
               "max_part": # of maximum participants,
               "experience": # years experience required,
               "pay": pay in Korean Won,
-              "req_doc": blob of request document if exists
+              "req_doc": URL of request document if exists
           },
   		...
       ]
@@ -1704,7 +1704,7 @@
       "max_part": # of maximum participants,
       "experience": # years experience required,
       "pay": pay in Korean Won,
-      "req_doc": blob of request document if exists,
+      "req_doc": image file of request document if exists,
       "languages": // list of language requirements
       	[
               {
@@ -1761,7 +1761,7 @@
               "max_part": # of maximum participants,
               "experience": # years experience required,
               "pay": pay in Korean Won,
-              "req_doc": blob of request document if exists,
+              "req_doc": URL of request document if exists,
               "status": "working"
           },
           {
@@ -1773,7 +1773,7 @@
               "max_part": # of maximum participants,
               "experience": # years experience required,
               "pay": pay in Korean Won,
-              "req_doc": blob of request document if exists,
+              "req_doc": URL of request document if exists,
               "status": "working"
           },
           ...
@@ -1813,7 +1813,7 @@
               "max_part": # of maximum participants,
               "experience": # years experience required,
               "pay": pay in Korean Won,
-              "req_doc": blob of request document if exists
+              "req_doc": URL of request document if exists
           },
           {
           	"idx": project idx (2),
@@ -1824,7 +1824,7 @@
               "max_part": # of maximum participants,
               "experience": # years experience required,
               "pay": pay in Korean Won,
-              "req_doc": blob of request document if exists
+              "req_doc": URL of request document if exists
           },
           ...
       ]
@@ -1863,7 +1863,7 @@
               "max_part": # of maximum participants,
               "experience": # years experience required,
               "pay": pay in Korean Won,
-              "req_doc": blob of request document if exists,
+              "req_doc": URL of request document if exists,
               "status": "completed"
           },
           {
@@ -1875,7 +1875,7 @@
               "max_part": # of maximum participants,
               "experience": # years experience required,
               "pay": pay in Korean Won,
-              "req_doc": blob of request document if exists,
+              "req_doc": URL of request document if exists,
               "status": "completed"
           },
           ...
@@ -2049,7 +2049,7 @@
               "max_part": # of maximum participants,
               "experience": # years experience required,
               "pay": pay in Korean Won,
-              "req_doc": blob of request document if exists,
+              "req_doc": URL of request document if exists,
               "status": "pending"
           },
           {
@@ -2061,7 +2061,7 @@
               "max_part": # of maximum participants,
               "experience": # years experience required,
               "pay": pay in Korean Won,
-              "req_doc": blob of request document if exists,
+              "req_doc": URL of request document if exists,
               "status": "pending"
           },
           ...
@@ -2206,7 +2206,7 @@ CREATE TABLE Internal_project
   `experience`  INT       NOT NULL    COMMENT 'Years of experience',
   `pay`         DOUBLE    NOT NULL    COMMENT 'Pay',
   `registered_at` TIMESTAMP NOT NULL DEFAULT NOW(),
-  `req_doc`     BLOB      NULL    COMMENT 'Request document',
+  `req_doc`     VARCHAR(255)      NULL    COMMENT 'Request document',
   `status`      VARCHAR(15) NOT NULL COMMENT 'Status',
   `client_rating` DOUBLE NULL COMMENT 'Rating on client by freelancer',
   `freelancer_rating` DOUBLE NULL COMMENT 'Rating on freelancer by client',
@@ -2245,7 +2245,7 @@ CREATE TABLE External_project
   `start_date`  DATE            NOT NULL    COMMENT 'Start date',
   `end_date`    DATE            NOT NULL    COMMENT 'End date',
   `pay`         DOUBLE          NOT NULL    COMMENT 'Pay',
-  `attachment`  BLOB            NULL        COMMENT 'Attachment',
+  `attachment`  VARCHAR(255)            NULL        COMMENT 'Attachment',
   `comment`     VARCHAR(255)    NULL        COMMENT 'Comment',
   PRIMARY KEY (idx)
 );

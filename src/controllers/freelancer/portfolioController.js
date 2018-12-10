@@ -66,10 +66,14 @@ exports.getExternal = (req, res) => {
 
 exports.registerExternal = (req, res) => {
     const {freelancer_idx, name, start_date, end_date, pay, attachment, comment} = req.body;
-    let newProject = {freelancer_idx, name, start_date, end_date, pay, attachment, comment};
+    let newProject = {
+        freelancer_idx, name, start_date, end_date, pay,
+        attachment: req.file.location,
+        comment
+    };
     Object.keys(newProject).forEach(key => newProject[key] === undefined && delete newProject[key]);
 
-    db.query("INSERT INTO `External_project` SET ?", newProject, (err, result) => {
+    db.query("INSERT INTO `External_project` SET ?", newProject, (err) => {
         if (err) return res.status(400).json({
             success: false,
             error_message: "freelancer register external project failed; database error"

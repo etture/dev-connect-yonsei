@@ -12,7 +12,7 @@ exports.register = (req, res) => {
         max_part,
         experience,
         pay,
-        req_doc,
+        req_doc: req.file.location,
         status: "available"
     };
     Object.keys(toRegister).forEach(key => toRegister[key] === undefined && delete toRegister[key]);
@@ -27,6 +27,8 @@ exports.register = (req, res) => {
             });
         }
 
+        console.log('transaction project name:', name);
+
         db.query('INSERT INTO `Internal_project` SET ?', toRegister, (err, result) => {
             if (err) {
                 return db.rollback(() => {
@@ -37,9 +39,14 @@ exports.register = (req, res) => {
                 });
             }
 
+            console.log('internal project project name:', name);
+
             if (languages === undefined || languages.length === 0) {
-                res.status(200).json({
-                    success: true
+                return db.rollback(() => {
+                    res.status(400).json({
+                        success: false,
+                        error_message: "client register project failed; no languages defined"
+                    });
                 });
             } else {
                 const project_idx = result.insertId;
@@ -56,6 +63,8 @@ exports.register = (req, res) => {
                         });
                     }
 
+                    console.log('requirement project name:', name);
+
                     db.commit((err) => {
                         if (err) {
                             return db.rollback(() => {
@@ -65,6 +74,8 @@ exports.register = (req, res) => {
                                 });
                             });
                         }
+
+                        console.log('commit project name:', name);
 
                         res.status(200).json({
                             success: true

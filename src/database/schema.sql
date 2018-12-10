@@ -43,7 +43,7 @@ CREATE TABLE Internal_project
   `experience`  INT       NOT NULL    COMMENT 'Years of experience',
   `pay`         DOUBLE    NOT NULL    COMMENT 'Pay',
   `registered_at` TIMESTAMP NOT NULL DEFAULT NOW(),
-  `req_doc`     BLOB      NULL    COMMENT 'Request document',
+  `req_doc`     VARCHAR(255)      NULL    COMMENT 'Request document',
   `status`      VARCHAR(15) NOT NULL COMMENT 'Status',
   `client_rating` DOUBLE NULL COMMENT 'Rating on client by freelancer',
   `freelancer_rating` DOUBLE NULL COMMENT 'Rating on freelancer by client',
@@ -82,7 +82,7 @@ CREATE TABLE External_project
   `start_date`  DATE            NOT NULL    COMMENT 'Start date',
   `end_date`    DATE            NOT NULL    COMMENT 'End date',
   `pay`         DOUBLE          NOT NULL    COMMENT 'Pay',
-  `attachment`  BLOB            NULL        COMMENT 'Attachment',
+  `attachment`  VARCHAR(255)            NULL        COMMENT 'Attachment',
   `comment`     VARCHAR(255)    NULL        COMMENT 'Comment',
   PRIMARY KEY (idx)
 );

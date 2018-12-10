@@ -13,9 +13,9 @@ const PORT = process.env.PORT || 3014;
 const routes = require('./routes/index');
 
 // Middleware setup
+app.use(bodyParser.json({limit: '50mb'}));
+app.use(bodyParser.urlencoded({extended: true, limit: '50mb'}));
 app.use(morgan('dev'));
-app.use(bodyParser.json({type: '*/*'}));
-app.use(bodyParser.urlencoded({extended: false}));
 app.use(express.static('public'));
 app.use(cors());
 app.use(passport.initialize());

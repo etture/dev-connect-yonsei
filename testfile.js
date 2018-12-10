@@ -7,3 +7,6 @@ console.log('addArray:', addArray);
 const sampleList = [];
 const first = sampleList[0];
 console.log('first:', first);
+
+const path = require('path');
+console.log(path.extname('something.png'));
