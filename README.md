@@ -287,7 +287,7 @@
   }
   ```
 
-##### /api/admin/getClients
+##### /api/admin/account/getClients
 
 - get list of all clients
 
@@ -326,7 +326,7 @@
   }
   ```
 
-##### /api/admin/getAllUsers
+##### /api/admin/account/getAllUsers
 
 - get list of all users
 
